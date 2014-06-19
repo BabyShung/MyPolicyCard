@@ -21,6 +21,13 @@
 		B8B0F4F21952902600BE6929 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B0F4D41952902500BE6929 /* UIKit.framework */; };
 		B8B0F4FA1952902600BE6929 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F4F81952902600BE6929 /* InfoPlist.strings */; };
 		B8B0F4FC1952902600BE6929 /* MyPolicyCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F4FB1952902600BE6929 /* MyPolicyCardTests.m */; };
+		B8B0F50E1952905200BE6929 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F5071952905200BE6929 /* FirstViewController.m */; };
+		B8B0F50F1952905200BE6929 /* DECellData.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F5091952905200BE6929 /* DECellData.m */; };
+		B8B0F5101952905200BE6929 /* DECollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F50B1952905200BE6929 /* DECollectionViewCell.m */; };
+		B8B0F5111952905200BE6929 /* CardFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F50D1952905200BE6929 /* CardFlowLayout.m */; };
+		B8B0F5161952905F00BE6929 /* UIImage+imageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F5131952905F00BE6929 /* UIImage+imageCreator.m */; };
+		B8B0F51A1952938E00BE6929 /* blackBG.JPG in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F5181952938E00BE6929 /* blackBG.JPG */; };
+		B8B0F51B1952938E00BE6929 /* MainBG.JPG in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F5191952938E00BE6929 /* MainBG.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,18 @@
 		B8B0F4F71952902600BE6929 /* MyPolicyCardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyPolicyCardTests-Info.plist"; sourceTree = "<group>"; };
 		B8B0F4F91952902600BE6929 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B8B0F4FB1952902600BE6929 /* MyPolicyCardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPolicyCardTests.m; sourceTree = "<group>"; };
+		B8B0F5061952905200BE6929 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		B8B0F5071952905200BE6929 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		B8B0F5081952905200BE6929 /* DECellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DECellData.h; sourceTree = "<group>"; };
+		B8B0F5091952905200BE6929 /* DECellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DECellData.m; sourceTree = "<group>"; };
+		B8B0F50A1952905200BE6929 /* DECollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DECollectionViewCell.h; sourceTree = "<group>"; };
+		B8B0F50B1952905200BE6929 /* DECollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DECollectionViewCell.m; sourceTree = "<group>"; };
+		B8B0F50C1952905200BE6929 /* CardFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardFlowLayout.h; sourceTree = "<group>"; };
+		B8B0F50D1952905200BE6929 /* CardFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardFlowLayout.m; sourceTree = "<group>"; };
+		B8B0F5121952905F00BE6929 /* UIImage+imageCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+imageCreator.h"; sourceTree = "<group>"; };
+		B8B0F5131952905F00BE6929 /* UIImage+imageCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+imageCreator.m"; sourceTree = "<group>"; };
+		B8B0F5181952938E00BE6929 /* blackBG.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackBG.JPG; sourceTree = "<group>"; };
+		B8B0F5191952938E00BE6929 /* MainBG.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MainBG.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,12 +131,15 @@
 		B8B0F4D61952902500BE6929 /* MyPolicyCard */ = {
 			isa = PBXGroup;
 			children = (
+				B8B0F5051952904B00BE6929 /* x */,
 				B8B0F4DF1952902500BE6929 /* AppDelegate.h */,
 				B8B0F4E01952902500BE6929 /* AppDelegate.m */,
 				B8B0F4E21952902500BE6929 /* Main.storyboard */,
 				B8B0F4E51952902500BE6929 /* ViewController.h */,
 				B8B0F4E61952902600BE6929 /* ViewController.m */,
 				B8B0F4E81952902600BE6929 /* Images.xcassets */,
+				B8B0F5181952938E00BE6929 /* blackBG.JPG */,
+				B8B0F5191952938E00BE6929 /* MainBG.JPG */,
 				B8B0F4D71952902500BE6929 /* Supporting Files */,
 			);
 			path = MyPolicyCard;
@@ -150,6 +172,23 @@
 				B8B0F4F81952902600BE6929 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B8B0F5051952904B00BE6929 /* x */ = {
+			isa = PBXGroup;
+			children = (
+				B8B0F5061952905200BE6929 /* FirstViewController.h */,
+				B8B0F5071952905200BE6929 /* FirstViewController.m */,
+				B8B0F5081952905200BE6929 /* DECellData.h */,
+				B8B0F5091952905200BE6929 /* DECellData.m */,
+				B8B0F50A1952905200BE6929 /* DECollectionViewCell.h */,
+				B8B0F50B1952905200BE6929 /* DECollectionViewCell.m */,
+				B8B0F50C1952905200BE6929 /* CardFlowLayout.h */,
+				B8B0F50D1952905200BE6929 /* CardFlowLayout.m */,
+				B8B0F5121952905F00BE6929 /* UIImage+imageCreator.h */,
+				B8B0F5131952905F00BE6929 /* UIImage+imageCreator.m */,
+			);
+			name = x;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +267,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B0F51B1952938E00BE6929 /* MainBG.JPG in Resources */,
+				B8B0F51A1952938E00BE6929 /* blackBG.JPG in Resources */,
 				B8B0F4E91952902600BE6929 /* Images.xcassets in Resources */,
 				B8B0F4DB1952902500BE6929 /* InfoPlist.strings in Resources */,
 				B8B0F4E41952902500BE6929 /* Main.storyboard in Resources */,
@@ -249,7 +290,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B0F5161952905F00BE6929 /* UIImage+imageCreator.m in Sources */,
 				B8B0F4E71952902600BE6929 /* ViewController.m in Sources */,
+				B8B0F5111952905200BE6929 /* CardFlowLayout.m in Sources */,
+				B8B0F5101952905200BE6929 /* DECollectionViewCell.m in Sources */,
+				B8B0F50E1952905200BE6929 /* FirstViewController.m in Sources */,
+				B8B0F50F1952905200BE6929 /* DECellData.m in Sources */,
 				B8B0F4E11952902500BE6929 /* AppDelegate.m in Sources */,
 				B8B0F4DD1952902500BE6929 /* main.m in Sources */,
 			);

@@ -1,0 +1,60 @@
+//
+//  DECollectionViewCell.m
+//  MyPolicyCard
+//
+//  Created by Hao Zheng on 6/18/14.
+//  Copyright (c) 2014 Hao Zheng. All rights reserved.
+//
+
+#import "DECollectionViewCell.h"
+
+@interface DECollectionViewCell ()
+
+@property (nonatomic) UIView* placeHolderView;
+
+@end
+
+@implementation DECollectionViewCell
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        self.placeHolderView = [[UIView alloc] initWithFrame:frame];
+        self.placeHolderView.backgroundColor = [UIColor grayColor];
+    }
+    return self;
+}
+
+-(void)setImageView:(UIImageView *)imageView {
+    _imageView = imageView;
+    _imageView.frame = self.bounds;
+    _imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _imageView.layer.cornerRadius = 10.f;
+    _imageView.clipsToBounds = YES;
+    [self addSubview:_imageView];
+    if (self.isPlaceHolder) {
+        [self bringSubviewToFront:self.placeHolderView];
+    }
+}
+
+- (void) setIsPlaceHolder:(BOOL)isPlaceHolder {
+    _isPlaceHolder = isPlaceHolder;
+    if (isPlaceHolder) {
+        self.placeHolderView.frame = self.bounds;
+        [self addSubview:self.placeHolderView];
+    } else {
+        [self.placeHolderView removeFromSuperview];
+    }
+}
+
+- (void)setGestureRecognizer:(UIPanGestureRecognizer *)gestureRecognizer {
+    if (_gestureRecognizer==gestureRecognizer) {
+        return;
+    }
+    _gestureRecognizer = gestureRecognizer;
+    [self addGestureRecognizer:gestureRecognizer];
+}
+
+@end
