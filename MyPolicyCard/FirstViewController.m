@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import "DECollectionViewCell.h"
 #import "DECellData.h"
+#import "LoginViewController.h"
 
 const NSString *collectionCellIdentity = @"Cell";
 
@@ -51,6 +52,8 @@ const NSString *collectionCellIdentity = @"Cell";
     [super viewDidLoad];
     
     
+    self.navigationController.navigationBarHidden = YES;
+    
     [self.bottomCollectionView registerClass:[DECollectionViewCell class] forCellWithReuseIdentifier:[collectionCellIdentity copy]];
     
     
@@ -60,6 +63,12 @@ const NSString *collectionCellIdentity = @"Cell";
     self.currentCellHeader.text = [NSString stringWithFormat:@"This is data for cell \"%@\"", ((DECellData*)[self.bottomCVDataSource firstObject]).cellName];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"will sub");
+    LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+    loginVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:loginVC animated:NO completion:nil];
+}
 
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
