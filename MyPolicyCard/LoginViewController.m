@@ -7,11 +7,15 @@
 //
 
 #import "LoginViewController.h"
-
+#import "AnimateLabel.h"
 #import "UIButton+Bootstrap.h"
 
 @interface LoginViewController ()
 
+@property (weak, nonatomic) IBOutlet AnimateLabel *animatedLabel;
+@property (weak, nonatomic) IBOutlet UIView *logoView;
+@property (weak, nonatomic) IBOutlet UIView *userView;
+@property (weak, nonatomic) IBOutlet UIView *pwdView;
 
 @end
 
@@ -24,12 +28,21 @@
     
     [self.loginBtn primaryStyle];
     
+    //animate label
+    [self.animatedLabel animateWithWords:@[@"PolicyApp",@"Like it?"] forDuration:3.0f];
+    
+    self.logoView.layer.cornerRadius = 80.0f;
     
     //GESTURE - Dismiss the keyboard when tapped on the controller's view
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
     tap.delegate = self;
     
+    self.userView.layer.cornerRadius = 8;
+    self.pwdView.layer.cornerRadius = 8;
+    
+    [self.userTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.pwdTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
 }
 
 

@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DECollectionViewCell : UICollectionViewCell
+@interface CollectionCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView * imageView;
 
-@property (nonatomic, strong) UIPanGestureRecognizer *gestureRecognizer;
-
-@property (nonatomic) BOOL isPlaceHolder;
+@property (nonatomic, strong) UILabel * titleLabel;
 
 @end
