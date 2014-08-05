@@ -11,7 +11,7 @@
 
 @implementation Carrier
 
--(instancetype)initWithPlan:(NSString *)plan andPolicyNo:(NSArray *)policyNo andPhoneNo:(NSString *) phoneNo andWeb:(NSString *)website{
+-(instancetype)initWithPlan:(NSString *)plan andPolicyNo:(NSString *)policyNo andPhoneNo:(NSString *) phoneNo andWeb:(NSString *)website{
     
     self = [super init];
     if(self){
@@ -25,7 +25,7 @@
 }
 
 -(NSString *)description{
-    return [NSString stringWithFormat:@"toString: %@",_plan];
+    return [NSString stringWithFormat:@"planName: %@,policyNum: %@,phoneNum: %@,website: %@",_plan,_policyNumber,_phoneNumber,_website];
 }
 
 @end

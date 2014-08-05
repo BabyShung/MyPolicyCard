@@ -11,7 +11,7 @@
 
 
 
-@interface LoginViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface LoginViewController : UIViewController <UIGestureRecognizerDelegate,UITextFieldDelegate>
 
 
 @property (strong, nonatomic) UIView *sendButtonView;

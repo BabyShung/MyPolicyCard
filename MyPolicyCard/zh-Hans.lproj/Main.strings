@@ -1,0 +1,21 @@
+
+/* Class = "IBUIButton"; normalTitle = "Forget username/password?"; ObjectID = "1sI-qT-Pib"; */
+"1sI-qT-Pib.normalTitle" = "Forget username/password?";
+
+/* Class = "IBUILabel"; text = "5"; ObjectID = "YNs-Ga-Jwt"; */
+"YNs-Ga-Jwt.text" = "5";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "fkA-qu-4Fx"; */
+"fkA-qu-4Fx.text" = "Label";
+
+/* Class = "IBUITextField"; placeholder = "Username"; ObjectID = "h1u-wY-nQF"; */
+"h1u-wY-nQF.placeholder" = "Username";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "iaY-bY-8yx"; */
+"iaY-bY-8yx.text" = "1";
+
+/* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "pXz-AE-l85"; */
+"pXz-AE-l85.normalTitle" = "Login";
+
+/* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "uAx-WU-LEb"; */
+"uAx-WU-LEb.placeholder" = "Password";

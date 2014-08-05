@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  MyPolicyCard
+
+  Created by Hao Zheng on 8/4/14.
+  Copyright (c) 2014 Hao Zheng. All rights reserved.
+*/
+"OOPS"="Oops..";
+"ERROR_LOGIN"="Email or password incorrect.";
+"ERROR_REGISTER"="Email already registered.";
+"ERROR_EMAIL"="Email is invalid.";
+"ERROR_EMAIL_FORMAT"=" letters or numbers only.";
+"PLEASE_ENTER"="Please enter";
+"ERROR_PASSWORD_NOT_SAME"="Passwords not the same.";
+"AT_LEAST"=" at least ";
+"AT_MOST"="at most";
+"Hello"="Hello";
+"ANONYMOUS_HELLO"="Dear friend";
+"Cancel"="Cancel";
