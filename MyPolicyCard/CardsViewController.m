@@ -17,7 +17,7 @@
 #import "RQShineLabel.h"
 #import "User.h"
 #import "UILayers.h"
-
+#import "GeneralControl.h"
 
 const NSString *collectionCellIdentity = @"Cell";
 const CGFloat LeftMargin = 15.0f;
@@ -68,9 +68,6 @@ static NSArray *colors;
 //    
 //    self.carriers = [NSArray arrayWithObjects:c1,c2,c3,c4,c5,c6, nil];
     
-    
-
-
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -106,7 +103,7 @@ static NSArray *colors;
     self.phoneLabel.text = current.phoneNumber;
     self.webLabel.text = current.website;
     
-    CGRect titleRect = CGRectMake(LeftMargin, TopMargin, self.view.bounds.size.width/2, 30);
+    CGRect titleRect = CGRectMake(LeftMargin, TopMargin, self.view.bounds.size.width, 30);
     self.shimmeringView = [[FBShimmeringView alloc] initWithFrame:titleRect];
     self.shimmeringView.shimmering = YES;   //start shimmering
     self.shimmeringView.shimmeringBeginFadeDuration = 0.2;
@@ -213,9 +210,10 @@ static NSArray *colors;
 }
 
 - (IBAction)back:(id)sender {
-//    LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-//    loginVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    [self presentViewController:loginVC animated:YES completion:nil];
+    
+    [User logOut];
+    [GeneralControl transitionToVC:self withToVCStoryboardId:@"Login" withDuration:0.4];
+    
 }
 
 -(BOOL)prefersStatusBarHidden{

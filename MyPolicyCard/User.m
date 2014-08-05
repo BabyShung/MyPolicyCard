@@ -122,7 +122,24 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
 }
 
 +(void) logOut{
+    
+    /************************
+     
+     log out release things
+     
+     ************************/
+    
     [PFUser logOut];
+    
+    //set user to nil
+    [User ClearUserInfo];
+    
+    //clear userdefault for second login
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CurrentUser"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    NSLog(@"------click log out------");
 }
 
 
@@ -191,6 +208,14 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
     User *user = [self sharedInstanceWithUserName:username andProfileName:profileName andCheckDeviceDate:checkDeviceDate];
     return user;
 }
+
++(void)ClearUserInfo{
+    NSLog(@"----- User info clear----");
+    sharedInstance.username = nil;
+    sharedInstance.profileName =nil;
+    sharedInstance.checkDeviceDate = nil;
+}
+
 
 - (NSString *)description{
 	NSString *desc  = [NSString stringWithFormat:@"\n username: %@,\n profileName: %@,\n checkDeviceDate: %@", self.username,self.profileName,self.checkDeviceDate];

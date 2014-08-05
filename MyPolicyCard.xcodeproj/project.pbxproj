@@ -20,6 +20,8 @@
 		B81AA2B519906331003028EB /* UIColor+flat.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA2B419906331003028EB /* UIColor+flat.m */; };
 		B81AA2B819906403003028EB /* FeBasicAnimationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA2B719906403003028EB /* FeBasicAnimationBlock.m */; };
 		B81AA2BB19907823003028EB /* LoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA2BA19907823003028EB /* LoadingAnimation.m */; };
+		B81AA2C619912FD4003028EB /* bgProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = B81AA2C419912FD4003028EB /* bgProfile.png */; };
+		B81AA2C719912FD4003028EB /* bgLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = B81AA2C519912FD4003028EB /* bgLogin.png */; };
 		B878EE911953BA1A00C43583 /* phone_01.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE8F1953BA1A00C43583 /* phone_01.png */; };
 		B878EE921953BA1A00C43583 /* phone_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE901953BA1A00C43583 /* phone_01@2x.png */; };
 		B878EE951953BB1500C43583 /* plan_01.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE931953BB1500C43583 /* plan_01.png */; };
@@ -61,8 +63,6 @@
 		B8B0F50E1952905200BE6929 /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F5071952905200BE6929 /* CardsViewController.m */; };
 		B8B0F5101952905200BE6929 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F50B1952905200BE6929 /* CollectionCell.m */; };
 		B8B0F5111952905200BE6929 /* CardFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F50D1952905200BE6929 /* CardFlowLayout.m */; };
-		B8B0F51A1952938E00BE6929 /* blackBG.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F5181952938E00BE6929 /* blackBG.png */; };
-		B8B0F51B1952938E00BE6929 /* MainBG.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F5191952938E00BE6929 /* MainBG.png */; };
 		B8B0F52419529BE800BE6929 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F52319529BE800BE6929 /* LoginViewController.m */; };
 		B8B0F52B19529BEE00BE6929 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F52519529BEE00BE6929 /* lock.png */; };
 		B8B0F52C19529BEE00BE6929 /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F52619529BEE00BE6929 /* lock@2x.png */; };
@@ -120,6 +120,8 @@
 		B81AA2B719906403003028EB /* FeBasicAnimationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeBasicAnimationBlock.m; sourceTree = "<group>"; };
 		B81AA2B919907822003028EB /* LoadingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingAnimation.h; sourceTree = "<group>"; };
 		B81AA2BA19907823003028EB /* LoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAnimation.m; sourceTree = "<group>"; };
+		B81AA2C419912FD4003028EB /* bgProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgProfile.png; sourceTree = "<group>"; };
+		B81AA2C519912FD4003028EB /* bgLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgLogin.png; sourceTree = "<group>"; };
 		B878EE8F1953BA1A00C43583 /* phone_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_01.png; sourceTree = "<group>"; };
 		B878EE901953BA1A00C43583 /* phone_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_01@2x.png"; sourceTree = "<group>"; };
 		B878EE931953BB1500C43583 /* plan_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plan_01.png; sourceTree = "<group>"; };
@@ -171,8 +173,6 @@
 		B8B0F50B1952905200BE6929 /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
 		B8B0F50C1952905200BE6929 /* CardFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardFlowLayout.h; sourceTree = "<group>"; };
 		B8B0F50D1952905200BE6929 /* CardFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardFlowLayout.m; sourceTree = "<group>"; };
-		B8B0F5181952938E00BE6929 /* blackBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackBG.png; sourceTree = "<group>"; };
-		B8B0F5191952938E00BE6929 /* MainBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainBG.png; sourceTree = "<group>"; };
 		B8B0F52219529BE800BE6929 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B8B0F52319529BE800BE6929 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B8B0F52519529BEE00BE6929 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
@@ -382,6 +382,8 @@
 		B8B0F53119529C2200BE6929 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B81AA2C419912FD4003028EB /* bgProfile.png */,
+				B81AA2C519912FD4003028EB /* bgLogin.png */,
 				B8C8F27B195D2F80009F8F6E /* google.png */,
 				B8C8F27C195D2F80009F8F6E /* MongoDB.png */,
 				B878EEA61953E30700C43583 /* back_01.png */,
@@ -400,8 +402,6 @@
 				B8B0F52619529BEE00BE6929 /* lock@2x.png */,
 				B8B0F52719529BEE00BE6929 /* user.png */,
 				B8B0F52819529BEE00BE6929 /* user@2x.png */,
-				B8B0F5181952938E00BE6929 /* blackBG.png */,
-				B8B0F5191952938E00BE6929 /* MainBG.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -536,15 +536,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B81AA2C719912FD4003028EB /* bgLogin.png in Resources */,
 				B8C8F27E195D2F80009F8F6E /* MongoDB.png in Resources */,
 				B8B0F52C19529BEE00BE6929 /* lock@2x.png in Resources */,
-				B8B0F51B1952938E00BE6929 /* MainBG.png in Resources */,
+				B81AA2C619912FD4003028EB /* bgProfile.png in Resources */,
 				B878EEA91953E30700C43583 /* back_01@2x.png in Resources */,
 				B878EEA11953BBBD00C43583 /* heart_01.png in Resources */,
 				B8B0F52D19529BEE00BE6929 /* user.png in Resources */,
 				B878EE951953BB1500C43583 /* plan_01.png in Resources */,
 				B878EEA81953E30700C43583 /* back_01.png in Resources */,
-				B8B0F51A1952938E00BE6929 /* blackBG.png in Resources */,
 				B81AA294199019AF003028EB /* Localizable.strings in Resources */,
 				B8C8F27D195D2F80009F8F6E /* google.png in Resources */,
 				B8B0F52B19529BEE00BE6929 /* lock.png in Resources */,

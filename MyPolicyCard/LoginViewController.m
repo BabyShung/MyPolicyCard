@@ -16,7 +16,7 @@
 #import "NSUserDefaultControls.h"
 #import "UIButton+ResponsiveInteraction.h"
 #import "UIColor+flat.h"
-
+#import "LoadingAnimation.h"
 
 #import <Parse/Parse.h>
 
@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIView *userView;
 @property (weak, nonatomic) IBOutlet UIView *pwdView;
 @property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
+@property (nonatomic,strong) LoadingAnimation *loadingImage;
 
 @end
 
@@ -41,11 +42,13 @@
     //cache keyboard
     [UIResponder cacheKeyboard];
     
+    //[self checkAndStartLoadingAnimation];
+    
     [self checkUserInNSUserDefaultAndPerformLogin];
     
-//    NSError *err = [User signUpWithEmail:@"1@1.com" andPassword:@"123123" andUsername:@"Hao" andAvatar:nil];
+//    NSError *err = [User signUpWithEmail:@"pmtruth@hotmail.com" andPassword:@"123123" andUsername:@"Alan.Wang" andAvatar:nil];
 //    if (!err)
-//        NSLog(@"sign up success");
+//        NSLog(@"sign up success!!@@!!");
 //    else
 //        NSLog(@"sign up failed");
 
@@ -181,7 +184,7 @@
         //self.signUpBtn.enabled = NO;
         //self.skipBtn.enabled = NO;
         [self.view endEditing:YES];
-        //[self checkAndStartLoadingAnimation];
+        [self checkAndStartLoadingAnimation];
         
         //********************* user login *******************************
         
@@ -201,7 +204,7 @@
                 self.loginBtn.enabled = YES;
                 //self.signUpBtn.enabled = YES;
                 //self.skipBtn.enabled = YES;
-                //[self.loadingImage stopAnimating];
+                [self.loadingImage stopAnimating];
                 
                 [GeneralControl showError:error withTextField:self.pwdTextField];
             }
@@ -232,6 +235,7 @@
 }
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{
+    NSLog(@"tapped.....");
     [self goDownAnimation];
 }
 
@@ -253,6 +257,17 @@
     }
 }
 
+-(void)checkAndStartLoadingAnimation{
+    //start animation
+    if(!self.loadingImage){
+        self.loadingImage = [[LoadingAnimation alloc] initWithStyle:RTSpinKitViewStylePlane color:[UIColor flatAlizarinColor]];
+        CGRect screenBounds = [[UIScreen mainScreen] bounds];
+        self.loadingImage.center = CGPointMake(CGRectGetMidX(screenBounds), iPhone5? screenBounds.size.height*0.5:screenBounds.size.height*0.75);
+        [self.view addSubview:self.loadingImage];
+    }
+    [self.loadingImage startAnimating];
+}
+
 -(void)loadControls{
     [self.loginBtn primaryStyle];
     // Active effect
@@ -265,10 +280,6 @@
     
     self.logoView.layer.cornerRadius = 80.0f;
     
-    //GESTURE - Dismiss the keyboard when tapped on the controller's view
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goDownAnimation)];
-    [self.view addGestureRecognizer:tap];
-    
     self.userView.layer.cornerRadius = 8;
     self.pwdView.layer.cornerRadius = 8;
     
@@ -280,6 +291,10 @@
     
     [self.userTextField setKeyboardType:UIKeyboardTypeEmailAddress];
     self.pwdTextField.secureTextEntry = YES;
+    
+    //GESTURE - Dismiss the keyboard when tapped on the controller's view
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(MySingleTap:)];
+    [self.view addGestureRecognizer:tap];
 }
 
 @end
