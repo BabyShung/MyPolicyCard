@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardsViewController : UIViewController
+@interface CardsOldViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @end

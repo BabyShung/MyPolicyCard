@@ -46,7 +46,7 @@
     
     [self checkUserInNSUserDefaultAndPerformLogin];
     
-//    NSError *err = [User signUpWithEmail:@"pmtruth@hotmail.com" andPassword:@"123123" andUsername:@"Alan.Wang" andAvatar:nil];
+//    NSError *err = [User signUpWithEmail:@"alan.wang@afis-benefits.com" andPassword:@"333333" andUsername:@"Alan.Wang" andAvatar:nil];
 //    if (!err)
 //        NSLog(@"sign up success!!@@!!");
 //    else
@@ -161,7 +161,7 @@
         //from dictionary to User instance
         [User fromDictionaryToUser:dict];
         
-        [GeneralControl transitionToVC:self withToVCStoryboardId:@"CardNav" withDuration:0];
+        [GeneralControl transitionToVC:self withToVCStoryboardId:@"CardNav" withDuration:0.8];
         
         NSLog(@"******************  Second Login: %@",[User sharedInstance]);
         

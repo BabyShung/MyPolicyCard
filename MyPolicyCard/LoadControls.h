@@ -11,7 +11,9 @@
 @interface LoadControls : NSObject
 
 +(UIImageView *)createImageViewWithRect:(CGRect)rect;
+
 +(UILabel *)createLabelWithRect:(CGRect)rect andTextAlignment:(NSTextAlignment)ta andFont:(UIFont*)font andTextColor:(UIColor*)color;
+
 +(UITextView *)createTextViewWithRect:(CGRect)rect;
 
 @end

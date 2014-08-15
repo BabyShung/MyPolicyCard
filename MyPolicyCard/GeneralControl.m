@@ -18,6 +18,8 @@
     
     if(error.code == 101){
         errorMsg = AMLocalizedString(@"ERROR_LOGIN", nil);
+    }else{
+        //general error
     }
     [self showAlertView:errorMsg withTextField:textfield];
 }

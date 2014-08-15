@@ -1,6 +1,6 @@
 
 /* Class = "IBUIButton"; normalTitle = "Forget username/password?"; ObjectID = "1sI-qT-Pib"; */
-"1sI-qT-Pib.normalTitle" = "Forget username/password?";
+"1sI-qT-Pib.normalTitle" = "Forget password?";
 
 /* Class = "IBUILabel"; text = "5"; ObjectID = "YNs-Ga-Jwt"; */
 "YNs-Ga-Jwt.text" = "5";

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Hao Zheng. All rights reserved.
 //
 
-#import "CardsViewController.h"
+#import "CardsOldViewController.h"
 #import "CollectionCell.h"
 #import "LoginViewController.h"
 
@@ -24,7 +24,7 @@ const CGFloat LeftMargin = 15.0f;
 const CGFloat TopMargin = 25.0f;
 static NSArray *colors;
 
-@interface CardsViewController ()
+@interface CardsOldViewController ()
     <UICollectionViewDataSource,
     UICollectionViewDelegate>
 
@@ -47,9 +47,11 @@ static NSArray *colors;
 @property (strong,nonatomic) FBShimmeringView *shimmeringView;
 @property (strong, nonatomic) RQShineLabel *descriptionLabel;
 
+@property (nonatomic) int assumedIndex;
+
 @end
 
-@implementation CardsViewController
+@implementation CardsOldViewController
 - (void) doInits {
     
     colors = @[[UIColor colorWithRed:(0/255.0) green:(181/255.0) blue:(239/255.0) alpha:1],
@@ -68,6 +70,7 @@ static NSArray *colors;
 //    
 //    self.carriers = [NSArray arrayWithObjects:c1,c2,c3,c4,c5,c6, nil];
     
+    //////
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -80,7 +83,97 @@ static NSArray *colors;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadControls];
     
+    [User fetchPlansWithBlock:^(NSError *err, BOOL success,NSArray *carriers){
+        
+        if(success){
+            //NSLog(@"done! %d",carriers.count);
+            self.carriers = carriers;
+            
+            //update all UI
+            [self updateData];
+            [self.bottomCollectionView reloadData];
+        }else{
+            
+        }
+    }];
+}
+
+-(void)updateData{
+    //first show
+    Carrier *current = (Carrier*)[self.carriers firstObject];
+    self.currentCellHeader.text = [NSString stringWithFormat:@"%@", current.plan];
+    self.policyLabel.text = current.policyNumber;//current.policyNumber.count==0?@"":current.policyNumber;
+    self.phoneLabel.text = current.phoneNumber;
+    self.webLabel.text = current.website;
+    
+    self.numerator.text = @"1";
+    self.denominator.text = [NSString stringWithFormat:@"%d", (int)self.carriers.count];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    //let shine label shine
+    [self.descriptionLabel shine];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.shimmeringView.shimmering = NO;
+    });
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - UIScrollViewDelegate Methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.bottomCollectionView) {
+        
+        NSIndexPath *centerCellIndex = [self.bottomCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.bottomCollectionView.bounds) , CGRectGetMidY(self.bottomCollectionView.bounds))];
+        
+        if(centerCellIndex.row != _assumedIndex){
+            _assumedIndex = (int)centerCellIndex.row;
+            
+            NSLog(@"did scroll to index: %d",(int)centerCellIndex.row);
+            
+            
+            Carrier *current = (Carrier*)[self.carriers objectAtIndex:centerCellIndex.row];
+            self.currentCellHeader.text = [NSString stringWithFormat:@"%@", current.plan];
+            self.policyLabel.text = current.policyNumber;
+            self.phoneLabel.text = current.phoneNumber;
+            self.webLabel.text = current.website;
+            
+            self.numerator.text = [NSString stringWithFormat:@"%d",(int)centerCellIndex.row+1];
+        }
+    }
+}
+
+#pragma mark - UICollectionViewDataSource Methods
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.carriers count];
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+        CollectionCell *cell = (CollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[collectionCellIdentity copy] forIndexPath:indexPath];
+        //cell.imageView = ((DECellData*)self.bottomCVDataSource[indexPath.item]).cellImageView;
+    
+        cell.titleLabel.text = ((Carrier*)[self.carriers objectAtIndex:indexPath.row]).plan;
+        cell.backgroundColor = colors[indexPath.row%self.carriers.count];
+    
+        return cell;
+}
+
+-(void)loadControls{
     //add layers to the image frame
     UILayers *uil = [[UILayers alloc]init];
     
@@ -88,20 +181,13 @@ static NSArray *colors;
     [self.logoImageView.layer addSublayer:calayer];
     calayer = [uil borderLayerWidth:self.logoImageView.frame.size.width andHeight:self.logoImageView.frame.size.height andBorderWidth:0.3 andColor:[UIColor grayColor]];
     [self.logoImageView.layer addSublayer:calayer];
-
     
-    self.navigationController.navigationBarHidden = YES;
     
     [self.bottomCollectionView registerClass:[CollectionCell class] forCellWithReuseIdentifier:[collectionCellIdentity copy]];
     
     self.bottomCollectionView.clipsToBounds = NO;
     
-    //first show
-    Carrier *current = (Carrier*)[self.carriers firstObject];
-    self.currentCellHeader.text = [NSString stringWithFormat:@"%@", current.plan];
-    self.policyLabel.text = current.policyNumber;//current.policyNumber.count==0?@"":current.policyNumber;
-    self.phoneLabel.text = current.phoneNumber;
-    self.webLabel.text = current.website;
+    
     
     CGRect titleRect = CGRectMake(LeftMargin, TopMargin, self.view.bounds.size.width, 30);
     self.shimmeringView = [[FBShimmeringView alloc] initWithFrame:titleRect];
@@ -131,83 +217,9 @@ static NSArray *colors;
         label;
     });
     [self.view addSubview:self.descriptionLabel];
-
-    self.denominator.text = [NSString stringWithFormat:@"%d", self.carriers.count];
-    
-    
-    [User fetchPlansWithBlock:^(NSError *err, BOOL success,NSArray *carriers){
-        
-        if(success){
-            NSLog(@"done! %d",carriers.count);
-            self.carriers = carriers;
-            
-            //update all UI
-            
-            [self.bottomCollectionView reloadData];
-        }else{
-            
-        }
-        
-    }];
     
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    
-    //let shine label shine
-    [self.descriptionLabel shine];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.shimmeringView.shimmering = NO;
-    });
-}
-
--(void)viewWillAppear:(BOOL)animated{
-//    NSLog(@"will sub");
-//    LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-//    loginVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    [self presentViewController:loginVC animated:NO completion:nil];
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
-
-#pragma mark - UIScrollViewDelegate Methods
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == self.bottomCollectionView) {
-        NSIndexPath *centerCellIndex = [self.bottomCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.bottomCollectionView.bounds) , CGRectGetMidY(self.bottomCollectionView.bounds))];
-        
-        Carrier *current = (Carrier*)[self.carriers objectAtIndex:centerCellIndex.row];
-        self.currentCellHeader.text = [NSString stringWithFormat:@"%@", current.plan];
-        self.policyLabel.text = current.policyNumber;
-        self.phoneLabel.text = current.phoneNumber;
-        self.webLabel.text = current.website;
-        
-        self.numerator.text = [NSString stringWithFormat:@"%d",centerCellIndex.row+1];
-        
-    }
-}
-
-#pragma mark - UICollectionViewDataSource Methods
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.carriers count];
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-        CollectionCell *cell = (CollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[collectionCellIdentity copy] forIndexPath:indexPath];
-        //cell.imageView = ((DECellData*)self.bottomCVDataSource[indexPath.item]).cellImageView;
-    
-        cell.titleLabel.text = ((Carrier*)[self.carriers objectAtIndex:indexPath.row]).plan;
-        cell.backgroundColor = colors[indexPath.row%self.carriers.count];
-    
-        return cell;
-}
 
 - (IBAction)back:(id)sender {
     

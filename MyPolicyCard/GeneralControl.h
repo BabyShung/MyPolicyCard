@@ -18,5 +18,4 @@
 
 +(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name withDuration:(CGFloat) duration;
 
-
 @end

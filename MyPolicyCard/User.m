@@ -15,11 +15,9 @@ static edibleBlock CompletionBlock;
 static edibleBlockForCarriers CompletionBlockForCarriers;
 @interface User()
 
-
 @end
 
 #define PHOTO_MAX_SIZE 1 //max iamge size 1 m
-
 
 @implementation User
 
@@ -101,7 +99,7 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
 
 +(void)logInWithUsername:(NSString *)username andPassword:(NSString *)pwdString WithCompletion:(void (^)(NSError *err, BOOL success))block{
     CompletionBlock = block;
-    
+    //using the parse framework
     [PFUser logInWithUsernameInBackground:username password:pwdString
                                     block:^(PFUser *user, NSError *appError) {
                                         if (user) {
@@ -109,6 +107,7 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
                                             user[@"checkDeviceDate"] = [NSDate date];
                                             [user saveInBackground];
                                             
+                                            //init the User instance
                                             [self sharedInstanceWithUserName:user.username andProfileName:user[@"AppUserName"] andCheckDeviceDate:user[@"checkDeviceDate"]];
                                             if (CompletionBlock) {
                                                 CompletionBlock(nil,YES);
@@ -141,8 +140,6 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
     }
     NSLog(@"------click log out------");
 }
-
-
 
 +(NSError *) signUpWithEmail:(NSString *)email
                  andPassword:(NSString *)pwdString
@@ -215,7 +212,6 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
     sharedInstance.profileName =nil;
     sharedInstance.checkDeviceDate = nil;
 }
-
 
 - (NSString *)description{
 	NSString *desc  = [NSString stringWithFormat:@"\n username: %@,\n profileName: %@,\n checkDeviceDate: %@", self.username,self.profileName,self.checkDeviceDate];
