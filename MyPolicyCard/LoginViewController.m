@@ -15,8 +15,8 @@
 #import "FormValidator.h"
 #import "NSUserDefaultControls.h"
 #import "UIButton+ResponsiveInteraction.h"
-#import "UIColor+flat.h"
-#import "LoadingAnimation.h"
+
+#import "notifyWindow.h"
 
 #import <Parse/Parse.h>
 
@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIView *userView;
 @property (weak, nonatomic) IBOutlet UIView *pwdView;
 @property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
-@property (nonatomic,strong) LoadingAnimation *loadingImage;
+@property (nonatomic,strong) notifyWindow *notiWindow;
 
 @end
 
@@ -41,8 +41,6 @@
     
     //cache keyboard
     [UIResponder cacheKeyboard];
-    
-    //[self checkAndStartLoadingAnimation];
     
     [self checkUserInNSUserDefaultAndPerformLogin];
     
@@ -161,7 +159,7 @@
         //from dictionary to User instance
         [User fromDictionaryToUser:dict];
         
-        [GeneralControl transitionToVC:self withToVCStoryboardId:@"CardNav" withDuration:0.8];
+        [GeneralControl transitionToVC:self withToVCStoryboardId:@"CardsNav" withDuration:0.8];
         
         NSLog(@"******************  Second Login: %@",[User sharedInstance]);
         
@@ -180,11 +178,8 @@
     if([validate isValid]){    //success
         //[Flurry logEvent:@"Read_TO_Login"];
         
-        self.loginBtn.enabled = NO;
-        //self.signUpBtn.enabled = NO;
-        //self.skipBtn.enabled = NO;
         [self.view endEditing:YES];
-        [self checkAndStartLoadingAnimation];
+        [self.notiWindow showWindow];
         
         //********************* user login *******************************
         
@@ -201,10 +196,7 @@
                 [GeneralControl transitionToVC:self withToVCStoryboardId:@"CardNav" withDuration:0.5];
             }else{
                 //not success
-                self.loginBtn.enabled = YES;
-                //self.signUpBtn.enabled = YES;
-                //self.skipBtn.enabled = YES;
-                [self.loadingImage stopAnimating];
+                [self.notiWindow hideWindow];
                 
                 [GeneralControl showError:error withTextField:self.pwdTextField];
             }
@@ -215,10 +207,6 @@
         NSString *errorString = [[validate errorMsg] componentsJoinedByString: @"\n"];
         [GeneralControl showErrorMsg:errorString withTextField:nil];
     }
-}
-
--(BOOL)prefersStatusBarHidden{
-    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -257,15 +245,11 @@
     }
 }
 
--(void)checkAndStartLoadingAnimation{
-    //start animation
-    if(!self.loadingImage){
-        self.loadingImage = [[LoadingAnimation alloc] initWithStyle:RTSpinKitViewStylePlane color:[UIColor flatAlizarinColor]];
-        CGRect screenBounds = [[UIScreen mainScreen] bounds];
-        self.loadingImage.center = CGPointMake(CGRectGetMidX(screenBounds), iPhone5? screenBounds.size.height*0.5:screenBounds.size.height*0.75);
-        [self.view addSubview:self.loadingImage];
+-(notifyWindow*)notiWindow{
+    if(!_notiWindow){
+        _notiWindow = [[notifyWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
-    [self.loadingImage startAnimating];
+    return _notiWindow;
 }
 
 -(void)loadControls{

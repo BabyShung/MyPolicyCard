@@ -30,10 +30,14 @@
     
     //my special window
     self.foregroundWindow = [[HaoWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.foregroundWindow.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"CardsNav"];
+    self.foregroundWindow.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
     self.foregroundWindow.windowLevel = UIWindowLevelStatusBar;
+    //self.foregroundWindow.backgroundColor = [UIColor clearColor];
     [self.foregroundWindow makeKeyAndVisible];
     
+    //self.notifyWindow = [[notifyWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //[self.notifyWindow makeKeyAndVisible];
+
     
     return YES;
 }

@@ -9,6 +9,7 @@
 #import "GeneralControl.h"
 #import "UIAlertView+Blocks.h"
 #import "LocalizationSystem.h"
+#import "AppDelegate.h"
 
 @implementation GeneralControl
 
@@ -45,8 +46,11 @@
 }
 
 +(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name withDuration:(CGFloat) duration{
-    UIWindow *windooo = [[[UIApplication sharedApplication] delegate] window];
+    
+    AppDelegate *appd = [[UIApplication sharedApplication] delegate];
+    UIWindow *windooo = appd.foregroundWindow;
     UIViewController *fvc = [vc.storyboard instantiateViewControllerWithIdentifier:name];
+    //fvc.view.backgroundColor = [UIColor clearColor];
     [UIView transitionWithView:windooo
                       duration:duration
                        options:UIViewAnimationOptionCurveEaseOut

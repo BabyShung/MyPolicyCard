@@ -41,7 +41,7 @@
 -(void)setup{
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     [self addGestureRecognizer:panGesture];
-    //self.layer.cornerRadius = 6.0f;
+    self.backgroundColor = [UIColor clearColor];
     self.layer.shadowRadius = 4.0f;
     self.layer.shadowOffset = CGSizeMake(0,0);
     self.layer.shadowColor = [UIColor blackColor].CGColor;

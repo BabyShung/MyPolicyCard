@@ -37,7 +37,6 @@
 		B878EEA91953E30700C43583 /* back_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EEA71953E30700C43583 /* back_01@2x.png */; };
 		B878EEAC1953E54A00C43583 /* AnimateLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B878EEAB1953E54A00C43583 /* AnimateLabel.m */; };
 		B89CC7FE199D933D004FEB7A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC7FD199D933D004FEB7A /* ProfileViewController.m */; };
-		B89CC801199D9344004FEB7A /* NavCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC800199D9344004FEB7A /* NavCardsViewController.m */; };
 		B89CC805199D934E004FEB7A /* EDB_tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = B89CC802199D934E004FEB7A /* EDB_tutorial.png */; };
 		B89CC806199D934E004FEB7A /* EDB_language.png in Resources */ = {isa = PBXBuildFile; fileRef = B89CC803199D934E004FEB7A /* EDB_language.png */; };
 		B89CC807199D934E004FEB7A /* EDB_aboutus.png in Resources */ = {isa = PBXBuildFile; fileRef = B89CC804199D934E004FEB7A /* EDB_aboutus.png */; };
@@ -49,6 +48,7 @@
 		B89CC81F199D9674004FEB7A /* smallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC81C199D9674004FEB7A /* smallLayout.m */; };
 		B89CC820199D9674004FEB7A /* largeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC81E199D9674004FEB7A /* largeLayout.m */; };
 		B89CC827199DBFC2004FEB7A /* HaoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC826199DBFC2004FEB7A /* HaoWindow.m */; };
+		B89CC82F199E93D3004FEB7A /* notifyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC82E199E93D3004FEB7A /* notifyWindow.m */; };
 		B8A420AB198FD1D500D77DFB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A420AA198FD1D500D77DFB /* Parse.framework */; };
 		B8A420AD198FD21300D77DFB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A420AC198FD21300D77DFB /* AudioToolbox.framework */; };
 		B8A420AF198FD21900D77DFB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A420AE198FD21900D77DFB /* CFNetwork.framework */; };
@@ -153,8 +153,6 @@
 		B878EEAB1953E54A00C43583 /* AnimateLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimateLabel.m; sourceTree = "<group>"; };
 		B89CC7FC199D933D004FEB7A /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		B89CC7FD199D933D004FEB7A /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		B89CC7FF199D9344004FEB7A /* NavCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavCardsViewController.h; sourceTree = "<group>"; };
-		B89CC800199D9344004FEB7A /* NavCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavCardsViewController.m; sourceTree = "<group>"; };
 		B89CC802199D934E004FEB7A /* EDB_tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDB_tutorial.png; sourceTree = "<group>"; };
 		B89CC803199D934E004FEB7A /* EDB_language.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDB_language.png; sourceTree = "<group>"; };
 		B89CC804199D934E004FEB7A /* EDB_aboutus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDB_aboutus.png; sourceTree = "<group>"; };
@@ -175,6 +173,8 @@
 		B89CC81E199D9674004FEB7A /* largeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = largeLayout.m; sourceTree = "<group>"; };
 		B89CC825199DBFC2004FEB7A /* HaoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HaoWindow.h; sourceTree = "<group>"; };
 		B89CC826199DBFC2004FEB7A /* HaoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HaoWindow.m; sourceTree = "<group>"; };
+		B89CC82D199E93D3004FEB7A /* notifyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notifyWindow.h; sourceTree = "<group>"; };
+		B89CC82E199E93D3004FEB7A /* notifyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = notifyWindow.m; sourceTree = "<group>"; };
 		B8A420AA198FD1D500D77DFB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		B8A420AC198FD21300D77DFB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B8A420AE198FD21900D77DFB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -373,6 +373,8 @@
 		B8B0F4C41952902500BE6929 = {
 			isa = PBXGroup;
 			children = (
+				B89CC82D199E93D3004FEB7A /* notifyWindow.h */,
+				B89CC82E199E93D3004FEB7A /* notifyWindow.m */,
 				B8B0F4DF1952902500BE6929 /* AppDelegate.h */,
 				B8B0F4E01952902500BE6929 /* AppDelegate.m */,
 				B89CC825199DBFC2004FEB7A /* HaoWindow.h */,
@@ -471,8 +473,6 @@
 				B89CC818199D95E2004FEB7A /* helloViewController.m */,
 				B89CC7FC199D933D004FEB7A /* ProfileViewController.h */,
 				B89CC7FD199D933D004FEB7A /* ProfileViewController.m */,
-				B89CC7FF199D9344004FEB7A /* NavCardsViewController.h */,
-				B89CC800199D9344004FEB7A /* NavCardsViewController.m */,
 				B89CC808199D9358004FEB7A /* SecondViewController.h */,
 				B89CC809199D9358004FEB7A /* SecondViewController.m */,
 				B8A420BF198FD36100D77DFB /* Buttons */,
@@ -689,6 +689,7 @@
 				B8B0F53C1953A23100BE6929 /* Carrier.m in Sources */,
 				B8B0F5391952A4A500BE6929 /* NSString+FontAwesome.m in Sources */,
 				B8C8F281195D31BF009F8F6E /* UILayers.m in Sources */,
+				B89CC82F199E93D3004FEB7A /* notifyWindow.m in Sources */,
 				B89CC816199D9392004FEB7A /* dragViewBehavior.m in Sources */,
 				B81AA2BB19907823003028EB /* LoadingAnimation.m in Sources */,
 				B8B0F5111952905200BE6929 /* CardFlowLayout.m in Sources */,
@@ -720,7 +721,6 @@
 				B81AA2A9199027B4003028EB /* UIAlertView+Blocks.m in Sources */,
 				B8B0F5481953B31000BE6929 /* LoadControls.m in Sources */,
 				B81AA286199016A8003028EB /* LocalizationSystem.m in Sources */,
-				B89CC801199D9344004FEB7A /* NavCardsViewController.m in Sources */,
 				B81AA2AA199027B4003028EB /* edi_md5.m in Sources */,
 				B89CC81F199D9674004FEB7A /* smallLayout.m in Sources */,
 			);
