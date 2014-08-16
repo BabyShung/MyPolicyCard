@@ -10,6 +10,8 @@
 
 @interface GeneralControl : NSObject
 
++(void)showConfirmLogout;
+
 +(void)showError:(NSError *)error withTextField:(UITextField *)textfield;
 
 +(void)showErrorMsg:(NSString *)msg withTextField:(UITextField *)textfield;
@@ -17,5 +19,7 @@
 +(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name;
 
 +(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name withDuration:(CGFloat) duration;
+
++(void)transitionToShowPlan:(UIViewController*)vc;
 
 @end

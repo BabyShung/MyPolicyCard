@@ -9,14 +9,16 @@
 #import "LoginViewController.h"
 #import "AnimateLabel.h"
 #import "UIButton+Bootstrap.h"
-#import "UIResponder+KeyboardCache.h"
 #import "GeneralControl.h"
 #import "User.h"
 #import "FormValidator.h"
 #import "NSUserDefaultControls.h"
 #import "UIButton+ResponsiveInteraction.h"
 
+#import "UIResponder+KeyboardCache.h"
 #import "notifyWindow.h"
+#import "HaoWindow.h"
+#import "AppDelegate.h"
 
 #import <Parse/Parse.h>
 
@@ -44,113 +46,6 @@
     
     [self checkUserInNSUserDefaultAndPerformLogin];
     
-//    NSError *err = [User signUpWithEmail:@"alan.wang@afis-benefits.com" andPassword:@"333333" andUsername:@"Alan.Wang" andAvatar:nil];
-//    if (!err)
-//        NSLog(@"sign up success!!@@!!");
-//    else
-//        NSLog(@"sign up failed");
-
-    
-//    NSError *err = [User logInWithUsername:@"babyshung8@gmail.com" andPassword:@"123123"];
-//    if (!err)
-//        NSLog(@"login success");
-//    else
-//        NSLog(@"login failed");
-
-    
-//    [PFUser logInWithUsernameInBackground:@"1@1.com" password:@"123123"
-//                                    block:^(PFUser *user, NSError *error) {
-//                                        if (user) {
-//                                            // Do stuff after successful login.
-//                                            NSLog(@"login success!!");
-//                                            
-//                                        } else {
-//                                            // The login failed. Check error to see why.
-//                                            NSLog(@"login failed!!");
-//                                        }
-//                                    }];
-    
-
-    //NSLog(@"````%@",[PFUser currentUser]);
-
-//    PFQuery *query2 = [PFQuery queryWithClassName:@"Policy"];
-//    [query2 whereKey:@"policyNum" equalTo:@"5723634"];
-//    [query2 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            // The find succeeded.
-//            NSLog(@"Successfully22 retrieved %d scores.", objects.count);
-//            // Do something with the found objects
-//            for (PFObject *object in objects) {
-//                NSLog(@"%@", object.objectId);
-//            }
-//        } else {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
-
-    
-//    //first, query to get all the plans based on the userId
-//    PFQuery *plansQuery = [PFQuery queryWithClassName:@"UserPolicy"];
-//   [plansQuery whereKey:@"UserObjectID" equalTo:[PFUser currentUser].objectId];
-//    [plansQuery orderByDescending:@"createdAt"];
-//    
-//    //second, when you get a list of policyId, use these IDs to get all the policies
-//    PFQuery *policyQuery = [PFQuery queryWithClassName:@"Policy"];
-//    [policyQuery whereKey:@"objectId" matchesKey:@"PolicyObjectID" inQuery:plansQuery];
-//    [policyQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-//        if (!error) {
-//            // The find succeeded.
-//            NSLog(@"Successfully1111 retrieved %d scores.", results.count);
-//            // Do something with the found objects
-//            for (PFObject *object in results) {
-//                NSLog(@"%@", object[@"policyNum"]);
-//            }
-//        } else {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
-    
-    
-    
-    
-//    PFQuery *query = [PFQuery queryWithClassName:@"UserPolicy"];
-//    [query whereKey:@"UserObjectID" equalTo:[PFUser currentUser].objectId];
-//    [query orderByDescending:@"createdAt"];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            // The find succeeded.
-//            NSLog(@"Successfully3333 retrieved %d scores.", objects.count);
-//            // Do something with the found objects
-//            for (PFObject *object in objects) {
-//                NSLog(@"%@", object.objectId);
-//            }
-//        } else {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
-    
-//    PFQuery *nonBlockedUserInnerQuery = [PFUser query];
-//    [nonBlockedUserInnerQuery whereKey:@"blocked" equalTo:@NO];
-//    
-//    PFQuery *postsByNonBlockedUsersQuery = [PFQuery queryWithClassName:@"Post"];
-//    [postsByNonBlockedUsersQuery whereKey:@"user" matchesQuery:nonBlockedUserInnerQuery];
-//    [postsByNonBlockedUsersQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-//        // results contains players with lots of wins or only a few wins.
-//    }];
-//    
-//    PFQuery *lotsOfWins = [PFQuery queryWithClassName:@"Player"];
-//    [lotsOfWins whereKey:@"wins" greaterThan:@150];
-//    
-//    PFQuery *fewWins = [PFQuery queryWithClassName:@"Player"];
-//    [fewWins whereKey:@"wins" lessThan:@5];
-//    PFQuery *query = [PFQuery orQueryWithSubqueries:@[fewWins,lotsOfWins]];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-//        // results contains players with lots of wins or only a few wins.
-//    }];
-
 }
 
 -(void)checkUserInNSUserDefaultAndPerformLogin{
@@ -159,7 +54,9 @@
         //from dictionary to User instance
         [User fromDictionaryToUser:dict];
         
-        [GeneralControl transitionToVC:self withToVCStoryboardId:@"CardsNav" withDuration:0.8];
+        //[GeneralControl transitionToVC:self withToVCStoryboardId:@"CardsNav" withDuration:0.8];
+        
+        [GeneralControl transitionToShowPlan:self];
         
         NSLog(@"******************  Second Login: %@",[User sharedInstance]);
         
@@ -193,7 +90,13 @@
                 //[Flurry logEvent:@"Login_Succeed"];
                 
                 //transition
-                [GeneralControl transitionToVC:self withToVCStoryboardId:@"CardNav" withDuration:0.5];
+                //[GeneralControl transitionToVC:self withToVCStoryboardId:@"CardNav" withDuration:0.5];
+                
+                //my special window
+                [GeneralControl transitionToShowPlan:self];
+
+                
+                [self.notiWindow hideWindow];
             }else{
                 //not success
                 [self.notiWindow hideWindow];
@@ -223,7 +126,7 @@
 }
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{
-    NSLog(@"tapped.....");
+    NSLog(@"tapped.....!!");
     [self goDownAnimation];
 }
 
@@ -279,6 +182,10 @@
     //GESTURE - Dismiss the keyboard when tapped on the controller's view
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(MySingleTap:)];
     [self.view addGestureRecognizer:tap];
+}
+
+-(BOOL)prefersStatusBarHidden{
+    return YES;
 }
 
 @end

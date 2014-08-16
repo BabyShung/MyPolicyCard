@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HaoWindow.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIWindow *foregroundWindow;
+@property (strong, nonatomic) UIWindow *profileWindow;
+@property (strong, nonatomic) HaoWindow *foregroundWindow;
 
 
 @end

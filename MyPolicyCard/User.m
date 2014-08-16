@@ -138,7 +138,7 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CurrentUser"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    NSLog(@"------click log out------");
+    NSLog(@"------ log out success------");
 }
 
 +(NSError *) signUpWithEmail:(NSString *)email

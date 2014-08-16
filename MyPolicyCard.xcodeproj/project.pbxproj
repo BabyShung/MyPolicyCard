@@ -22,6 +22,8 @@
 		B81AA2BB19907823003028EB /* LoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA2BA19907823003028EB /* LoadingAnimation.m */; };
 		B81AA2C619912FD4003028EB /* bgProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = B81AA2C419912FD4003028EB /* bgProfile.png */; };
 		B81AA2C719912FD4003028EB /* bgLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = B81AA2C519912FD4003028EB /* bgLogin.png */; };
+		B86616AE19A01CE9009AFAEB /* addImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B86616A919A01CE8009AFAEB /* addImage.png */; };
+		B86616AF19A01CE9009AFAEB /* IQFeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */; };
 		B878EE911953BA1A00C43583 /* phone_01.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE8F1953BA1A00C43583 /* phone_01.png */; };
 		B878EE921953BA1A00C43583 /* phone_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE901953BA1A00C43583 /* phone_01@2x.png */; };
 		B878EE951953BB1500C43583 /* plan_01.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE931953BB1500C43583 /* plan_01.png */; };
@@ -135,6 +137,9 @@
 		B81AA2BA19907823003028EB /* LoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAnimation.m; sourceTree = "<group>"; };
 		B81AA2C419912FD4003028EB /* bgProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgProfile.png; sourceTree = "<group>"; };
 		B81AA2C519912FD4003028EB /* bgLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgLogin.png; sourceTree = "<group>"; };
+		B86616A919A01CE8009AFAEB /* addImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addImage.png; sourceTree = "<group>"; };
+		B86616AA19A01CE9009AFAEB /* IQFeedbackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQFeedbackView.h; sourceTree = "<group>"; };
+		B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQFeedbackView.m; sourceTree = "<group>"; };
 		B878EE8F1953BA1A00C43583 /* phone_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_01.png; sourceTree = "<group>"; };
 		B878EE901953BA1A00C43583 /* phone_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_01@2x.png"; sourceTree = "<group>"; };
 		B878EE931953BB1500C43583 /* plan_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plan_01.png; sourceTree = "<group>"; };
@@ -303,6 +308,17 @@
 			name = responsiveBtn;
 			sourceTree = "<group>";
 		};
+		B86616A219A01265009AFAEB /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				B89CC82D199E93D3004FEB7A /* notifyWindow.h */,
+				B89CC82E199E93D3004FEB7A /* notifyWindow.m */,
+				B89CC825199DBFC2004FEB7A /* HaoWindow.h */,
+				B89CC826199DBFC2004FEB7A /* HaoWindow.m */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
 		B89CC80B199D9378004FEB7A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,12 +389,12 @@
 		B8B0F4C41952902500BE6929 = {
 			isa = PBXGroup;
 			children = (
-				B89CC82D199E93D3004FEB7A /* notifyWindow.h */,
-				B89CC82E199E93D3004FEB7A /* notifyWindow.m */,
+				B86616A919A01CE8009AFAEB /* addImage.png */,
+				B86616AA19A01CE9009AFAEB /* IQFeedbackView.h */,
+				B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */,
+				B86616A219A01265009AFAEB /* Windows */,
 				B8B0F4DF1952902500BE6929 /* AppDelegate.h */,
 				B8B0F4E01952902500BE6929 /* AppDelegate.m */,
-				B89CC825199DBFC2004FEB7A /* HaoWindow.h */,
-				B89CC826199DBFC2004FEB7A /* HaoWindow.m */,
 				B8B0F4E21952902500BE6929 /* Main.storyboard */,
 				B81AA29B19901B7F003028EB /* Localization */,
 				B8B0F4D61952902500BE6929 /* MyPolicyCard */,
@@ -651,6 +667,7 @@
 				B878EEA81953E30700C43583 /* back_01.png in Resources */,
 				B81AA294199019AF003028EB /* Localizable.strings in Resources */,
 				B8C8F27D195D2F80009F8F6E /* google.png in Resources */,
+				B86616AE19A01CE9009AFAEB /* addImage.png in Resources */,
 				B8B0F52B19529BEE00BE6929 /* lock.png in Resources */,
 				B89CC805199D934E004FEB7A /* EDB_tutorial.png in Resources */,
 				B8B0F4E91952902600BE6929 /* Images.xcassets in Resources */,
@@ -709,6 +726,7 @@
 				B89CC819199D95E2004FEB7A /* helloViewController.m in Sources */,
 				B878EEAC1953E54A00C43583 /* AnimateLabel.m in Sources */,
 				B8B0F5441953A97A00BE6929 /* FBShimmeringView.m in Sources */,
+				B86616AF19A01CE9009AFAEB /* IQFeedbackView.m in Sources */,
 				B8B0F52419529BE800BE6929 /* LoginViewController.m in Sources */,
 				B878EEA51953D52000C43583 /* RQShineLabel.m in Sources */,
 				B89CC7FE199D933D004FEB7A /* ProfileViewController.m in Sources */,

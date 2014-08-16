@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "ProfileViewController.h"
 #import "CardsOldViewController.h"
-#import "HaoWindow.h"
 
 @implementation AppDelegate
 
@@ -18,27 +17,17 @@
 {
     [Parse setApplicationId:@"StSG8dSOBAuifnwNj4nSh22ppKK6smU3Ayh8864t"
                   clientKey:@"lYw5JetgqAcRM12QOURKjlguO0szzE52nBLP1Gdb"];
-    
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Profile"];
+    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
     [self.window makeKeyAndVisible];
     
-    //my special window
-    self.foregroundWindow = [[HaoWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.foregroundWindow.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
-    self.foregroundWindow.windowLevel = UIWindowLevelStatusBar;
-    //self.foregroundWindow.backgroundColor = [UIColor clearColor];
-    [self.foregroundWindow makeKeyAndVisible];
-    
-    //self.notifyWindow = [[notifyWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    //[self.notifyWindow makeKeyAndVisible];
 
-    
     return YES;
 }
 							

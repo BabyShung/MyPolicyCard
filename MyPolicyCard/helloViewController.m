@@ -66,4 +66,8 @@ static NSString *CellIdentifier = @"Cell";
     return UIStatusBarStyleLightContent;
 }
 
+//-(BOOL)prefersStatusBarHidden{
+//    return YES;
+//}
+
 @end
