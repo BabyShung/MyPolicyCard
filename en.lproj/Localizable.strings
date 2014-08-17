@@ -19,3 +19,6 @@
 "ANONYMOUS_HELLO"="Dear friend";
 "Cancel"="Cancel";
 "Log out"="Log out";
+"FEEDBACK"="Feedback";
+"SUCCESS_FEEDBACK" = "Thank you!";
+"FAIL_FEEDBACK" = "Sorry, please send again";

@@ -11,7 +11,6 @@
 #import "LocalizationSystem.h"
 #import "AppDelegate.h"
 #import "HaoWindow.h"
-#import "User.h"
 
 @implementation GeneralControl
 
@@ -43,15 +42,6 @@
     }];
 }
 
-+(void)showConfirmLogout{
-    [UIAlertView showConfirmationDialogWithTitle:@"Log out" message:@"Are you sure to log out?" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == [alertView cancelButtonIndex]) {
-        }else{
-            [User logOut];
-        }
-    }];
-
-}
 
 +(void)transitionToShowPlan:(UIViewController*)vc{
     

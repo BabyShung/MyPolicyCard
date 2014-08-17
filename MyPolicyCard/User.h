@@ -42,4 +42,6 @@ typedef void (^edibleBlockForCarriers)(NSError *err, BOOL success,NSArray *carri
 
 +(User *)fromDictionaryToUser:(NSDictionary *)dict;
 
++(void)sendFeedBack:(NSString*)content andCompletion:(void (^)(NSError *err, BOOL success))block;
+
 @end

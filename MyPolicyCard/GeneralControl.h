@@ -10,8 +10,6 @@
 
 @interface GeneralControl : NSObject
 
-+(void)showConfirmLogout;
-
 +(void)showError:(NSError *)error withTextField:(UITextField *)textfield;
 
 +(void)showErrorMsg:(NSString *)msg withTextField:(UITextField *)textfield;

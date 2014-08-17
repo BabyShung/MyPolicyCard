@@ -206,6 +206,22 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
     return user;
 }
 
++(void)sendFeedBack:(NSString*)content andCompletion:(void (^)(NSError *err, BOOL success))block{
+    CompletionBlock = block;
+    
+    PFObject *gameScore = [PFObject objectWithClassName:@"Feedback"];
+    gameScore[@"email"] = sharedInstance.username;
+    gameScore[@"content"] = content;
+    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(succeeded){
+            CompletionBlock(nil,YES);
+        }else{
+            CompletionBlock(error,NO);
+        }
+    }];
+}
+
+
 +(void)ClearUserInfo{
     NSLog(@"----- User info clear----");
     sharedInstance.username = nil;

@@ -11,17 +11,19 @@
 #import "User.h"
 #import "GeneralControl.h"
 #import "UIAlertView+Blocks.h"
+#import "UIView+Toast.h"
 
 #import "LocalizationSystem.h"
 #import "IQFeedbackView.h"
 
-#import "AppDelegate.h"
 
 @interface ProfileViewController ()
 
 @property (strong,nonatomic) NSArray *profileData;
 
 @property (strong,nonatomic) NSArray *profileImagesData;
+
+@property (strong,nonatomic) NSString *tempFeedbackText;
 
 @end
 
@@ -84,42 +86,53 @@ const NSString *settingCellIdentity = @"Cell";
 //        [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"Search"] animated:YES];
     }else if(index == 1){
         
-        //[Flurry logEvent:@"Index_1_Feedback"];
-        
-        
-        IQFeedbackView *feedback = [[IQFeedbackView alloc] initWithTitle:AMLocalizedString(@"Feedback", nil) message:@"xxx" image:nil cancelButtonTitle:AMLocalizedString(@"Cancel", nil) doneButtonTitle:AMLocalizedString(@"Send", nil)];
-        [feedback setCanAddImage:NO];
-        [feedback setCanEditText:YES];
-        
-        
-        [feedback showInViewController:self completionHandler:^(BOOL isCancel, NSString *message, UIImage *image) {
-            
-            if(!isCancel){//sending feedback
-//                [User sendFeedBack:message andCompletion:^(NSError *err,BOOL success){
-//                    
-//                    if(success){
-//                        [self.view makeToast:AMLocalizedString(@"SUCCESS_FEEDBACK", nil)];
-//                        self.tempFeedbackText = @"";
-//                    }else{
-//                        [self.view makeToast:AMLocalizedString(@"FAIL_FEEDBACK", nil)];
-//                    }
-//                    
-//                }];
-            }else{
-                //temporary save the text
-                //self.tempFeedbackText = message;
-            }
-            [feedback dismiss];
-      
-        }];
+        [self showFeedbackView];
+
     }else if (index == 2){
-        [GeneralControl showConfirmLogout];
+        [self showConfirmLogout];
     }else if (index == 3){
        
     }
     
 }
 
+-(void)showConfirmLogout{
+    [UIAlertView showConfirmationDialogWithTitle:@"Log out" message:@"Are you sure to log out?" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if (buttonIndex == [alertView cancelButtonIndex]) {
+        }else{
+            [User logOut];
+        }
+    }];
+}
 
+-(void)showFeedbackView{
+    //[Flurry logEvent:@"Index_1_Feedback"];
+    
+    
+    IQFeedbackView *feedback = [[IQFeedbackView alloc] initWithTitle:AMLocalizedString(@"FEEDBACK", nil) message:self.tempFeedbackText image:nil cancelButtonTitle:AMLocalizedString(@"Cancel", nil) doneButtonTitle:AMLocalizedString(@"Send", nil)];
+    [feedback setCanAddImage:NO];
+    [feedback setCanEditText:YES];
+    
+    
+    [feedback showInViewController:self completionHandler:^(BOOL isCancel, NSString *message, UIImage *image) {
+        
+        if(!isCancel){//sending feedback
+            [User sendFeedBack:message andCompletion:^(NSError *err,BOOL success){
+                
+                if(success){
+                    [self.view makeToast:AMLocalizedString(@"SUCCESS_FEEDBACK", nil) duration:3.f position:@"top"];
+                    self.tempFeedbackText = @"";
+                }else{
+                    [self.view makeToast:AMLocalizedString(@"FAIL_FEEDBACK", nil) duration:3.f position:@"top"];
+                }
+            }];
+        }else{
+            //temporary save the text
+            self.tempFeedbackText = message;
+        }
+        [feedback dismiss];
+        
+    }];
+}
 
 @end
