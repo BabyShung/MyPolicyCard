@@ -10,6 +10,11 @@
 #import "AppDelegate.h"
 #import "ProfileViewController.h"
 #import "CardsOldViewController.h"
+#import "User.h"
+#import "GeneralControl.h"
+
+
+#import "UIResponder+KeyboardCache.h"
 
 @implementation AppDelegate
 
@@ -21,15 +26,43 @@
     
     
     
+    
+    
+    
+    [self checkUserInNSUserDefaultAndPerformLogin];
+    
+
+    return YES;
+}
+
+-(void)checkUserInNSUserDefaultAndPerformLogin{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"]) {
+        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"];
+        //from dictionary to User instance
+        [User fromDictionaryToUser:dict];
+        
+        [GeneralControl transitionToShowPlan:[UIStoryboard storyboardWithName:@"Main" bundle:nil] withAnimation:NO];
+        
+        NSLog(@"******************  Second Login: %@",[User sharedInstance]);
+        
+    }else{
+        [self initLoginWindow];
+    }
+}
+
+-(void)initLoginWindow{
+    
+    //cache keyboard
+    [UIResponder cacheKeyboard];
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
     [self.window makeKeyAndVisible];
-    
 
-    return YES;
 }
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -15,6 +15,10 @@
 #define WindowScaleFactor 0.04
 
 @interface HaoWindow()
+{
+    CGFloat ScreenWidth;
+    CGFloat ScreenHeight;
+}
 
 @property (strong, nonatomic) UIDynamicAnimator *animator;
 @property (nonatomic) dragViewState state;
@@ -31,27 +35,47 @@
     if (self) {
         
         //fix the first time bug
-        [self cancelTransition];
+        //[self cancelTransition];
         
         [self setup];
     }
     return self;
 }
 
--(void)setup{
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
-    [self addGestureRecognizer:panGesture];
-    self.backgroundColor = [UIColor clearColor];
-    self.layer.shadowRadius = 4.0f;
-    self.layer.shadowOffset = CGSizeMake(0,0);
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOpacity = .8f;
-    self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
+- (id)initWithFrameAndGestures:(CGRect)frame{
     
-    //add tap
-    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
-    [self addGestureRecognizer:_tapRecognizer];
-    _tapRecognizer.enabled = NO;
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        //fix the first time bug
+        //[self cancelTransition];
+        
+        [self setup];
+        
+        //pan gesture
+        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
+        [self addGestureRecognizer:panGesture];
+        
+        self.backgroundColor = [UIColor clearColor];
+        self.layer.shadowRadius = 4.0f;
+        self.layer.shadowOffset = CGSizeMake(0,0);
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowOpacity = .8f;
+        self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
+        
+        //add tap
+        _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+        [self addGestureRecognizer:_tapRecognizer];
+        _tapRecognizer.enabled = NO;
+        
+    }
+    return self;
+}
+
+-(void)setup{
+    
+    ScreenWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    ScreenHeight = CGRectGetHeight([[UIScreen mainScreen] bounds]);
     
     self.state = StateOpen;
     
@@ -82,6 +106,18 @@
 - (void)didTap:(UITapGestureRecognizer *)tapRecognizer{
     _tapRecognizer.enabled = NO;
     [self animateDragViewWithInitialVelocity:CGPointMake(0, -300)];
+}
+
+-(void)SlideInFromButtom{
+    
+    [self makeKeyAndVisible];
+    self.center = CGPointMake(ScreenWidth/2, ScreenHeight * 1.5);
+    [self animateDragViewWithInitialVelocity:CGPointMake(0, -300)];
+}
+
+-(void)slideOutFromTop{
+    
+    [self animateWindow_Velocity:CGPointMake(0, 200) andFinalPosition:CGPointMake(ScreenWidth/2, ScreenHeight * 1.5)];
 }
 
 - (void)onPan:(UIPanGestureRecognizer *)pan{
@@ -116,6 +152,18 @@
     }
 }
 
+-(void)animateWindow_Velocity:(CGPoint)initialVelocity andFinalPosition:(CGPoint)pos{
+    if (!self.dragBehavior) {
+        NSLog(@"init once for dragView behavior");
+        self.dragBehavior = [[dragViewBehavior alloc] initWithItem:self];//which object you want to operate
+    }
+    self.dragBehavior.targetPoint = pos;
+    self.dragBehavior.velocity = initialVelocity;
+    
+    //once added, it will effect
+    [self.animator addBehavior:self.dragBehavior];
+}
+
 - (void)animateDragViewWithInitialVelocity:(CGPoint)initialVelocity{
     
     if(initialVelocity.y >= 0){    //going down, which means closing
@@ -126,15 +174,8 @@
         _tapRecognizer.enabled = NO;
     }
     
-    if (!self.dragBehavior) {
-        NSLog(@"init once for dragView behavior");
-        self.dragBehavior = [[dragViewBehavior alloc] initWithItem:self];//which object you want to operate
-    }
-    self.dragBehavior.targetPoint = self.targetPoint;
-    self.dragBehavior.velocity = initialVelocity;
-    
-    //once added, it will effect
-    [self.animator addBehavior:self.dragBehavior];
+    //important
+    [self animateWindow_Velocity:initialVelocity andFinalPosition:[self getProperPoint]];
     
     //touch up and animate the rest
     [UIView animateWithDuration:.5 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -147,7 +188,7 @@
 }
 
 //getter
-- (CGPoint)targetPoint{
+- (CGPoint)getProperPoint{
     
     CGSize size = self.bounds.size;
     CGPoint result;

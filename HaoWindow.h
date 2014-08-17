@@ -11,4 +11,10 @@
 @interface HaoWindow : UIWindow
 @property (nonatomic, readonly) UIWindow *superWindow;
 @property (nonatomic, readonly) UIWindow *nextWindow;
+
+-(void)SlideInFromButtom;
+-(void)slideOutFromTop;
+
+- (id)initWithFrameAndGestures:(CGRect)frame;
+
 @end

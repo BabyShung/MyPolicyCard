@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeRippleButton.h"
 
 @interface ProfileCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *profileLabel;
+@property (weak, nonatomic) IBOutlet FeRippleButton *profileButton;
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @end

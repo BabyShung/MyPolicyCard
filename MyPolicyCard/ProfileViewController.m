@@ -73,27 +73,34 @@ const NSString *settingCellIdentity = @"Cell";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ProfileCell *cell = (ProfileCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[settingCellIdentity copy] forIndexPath:indexPath];
-    cell.profileLabel.text = [self.profileData objectAtIndex:indexPath.row];
+    
+    [cell.profileButton setTitle:[self.profileData objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    cell.profileButton.backgroundColor = [UIColor clearColor];
+    cell.profileButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    cell.profileButton.contentEdgeInsets = UIEdgeInsetsMake(0, cell.profileButton.bounds.size.width/2 - 30, 0, 0);
+    cell.profileButton.trackTouchLocation = YES;
+    
     cell.profileImageView.image = self.profileImagesData[indexPath.row];
+    
+    [cell.profileButton addTarget:self action:@selector(clickCell:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
     
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSUInteger index = indexPath.row;
-    if(index == 0){
-//        [Flurry logEvent:@"Index_0_Search"];
-//        [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"Search"] animated:YES];
-    }else if(index == 1){
-        
-        [self showFeedbackView];
-
-    }else if (index == 2){
-        [self showConfirmLogout];
-    }else if (index == 3){
-       
-    }
+-(void)clickCell:(id)sender{
     
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:buttonPosition];
+    NSUInteger index = indexPath.row;
+    
+    if(index == 0){
+        
+    }else if(index == 1){
+        [self showFeedbackView];
+    }else if(index == 2){
+        [self showConfirmLogout];
+    }
 }
 
 -(void)showConfirmLogout{
@@ -101,6 +108,7 @@ const NSString *settingCellIdentity = @"Cell";
         if (buttonIndex == [alertView cancelButtonIndex]) {
         }else{
             [User logOut];
+            [GeneralControl transitionForLogout];
         }
     }];
 }

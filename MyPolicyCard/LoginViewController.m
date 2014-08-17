@@ -15,7 +15,6 @@
 #import "NSUserDefaultControls.h"
 #import "UIButton+ResponsiveInteraction.h"
 
-#import "UIResponder+KeyboardCache.h"
 #import "notifyWindow.h"
 #import "HaoWindow.h"
 #import "AppDelegate.h"
@@ -41,29 +40,14 @@
 {
     [super viewDidLoad];
     
-    //cache keyboard
-    [UIResponder cacheKeyboard];
+
     
-    [self checkUserInNSUserDefaultAndPerformLogin];
-    
+    //[self checkUserInNSUserDefaultAndPerformLogin];
+    [self loadControls];
 }
 
--(void)checkUserInNSUserDefaultAndPerformLogin{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"]) {
-        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"];
-        //from dictionary to User instance
-        [User fromDictionaryToUser:dict];
-        
-        //[GeneralControl transitionToVC:self withToVCStoryboardId:@"CardsNav" withDuration:0.8];
-        
-        [GeneralControl transitionToShowPlan:self];
-        
-        NSLog(@"******************  Second Login: %@",[User sharedInstance]);
-        
-    }else{
-        [self loadControls];
-    }
-}
+
+
 
 - (IBAction)login:(UIButton *)sender {
     [self validateAllInputs];
@@ -93,7 +77,7 @@
                 //[GeneralControl transitionToVC:self withToVCStoryboardId:@"CardNav" withDuration:0.5];
                 
                 //my special window
-                [GeneralControl transitionToShowPlan:self];
+                [GeneralControl transitionToShowPlan:self.storyboard withAnimation:YES];
 
                 
                 [self.notiWindow hideWindow];
@@ -126,7 +110,6 @@
 }
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{
-    NSLog(@"tapped.....!!");
     [self goDownAnimation];
 }
 

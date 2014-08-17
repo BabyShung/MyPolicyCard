@@ -18,6 +18,8 @@
 
 +(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name withDuration:(CGFloat) duration;
 
-+(void)transitionToShowPlan:(UIViewController*)vc;
++(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate;
+
++(void)transitionForLogout;
 
 @end

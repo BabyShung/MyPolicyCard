@@ -25,6 +25,7 @@
 		B86616AE19A01CE9009AFAEB /* addImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B86616A919A01CE8009AFAEB /* addImage.png */; };
 		B86616AF19A01CE9009AFAEB /* IQFeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */; };
 		B86616B319A0281B009AFAEB /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B86616B219A0281B009AFAEB /* UIView+Toast.m */; };
+		B86616B619A04A51009AFAEB /* FeRippleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B86616B519A04A51009AFAEB /* FeRippleButton.m */; };
 		B878EE911953BA1A00C43583 /* phone_01.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE8F1953BA1A00C43583 /* phone_01.png */; };
 		B878EE921953BA1A00C43583 /* phone_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE901953BA1A00C43583 /* phone_01@2x.png */; };
 		B878EE951953BB1500C43583 /* plan_01.png in Resources */ = {isa = PBXBuildFile; fileRef = B878EE931953BB1500C43583 /* plan_01.png */; };
@@ -143,6 +144,8 @@
 		B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQFeedbackView.m; sourceTree = "<group>"; };
 		B86616B119A0281B009AFAEB /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		B86616B219A0281B009AFAEB /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		B86616B419A04A51009AFAEB /* FeRippleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeRippleButton.h; sourceTree = "<group>"; };
+		B86616B519A04A51009AFAEB /* FeRippleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeRippleButton.m; sourceTree = "<group>"; };
 		B878EE8F1953BA1A00C43583 /* phone_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_01.png; sourceTree = "<group>"; };
 		B878EE901953BA1A00C43583 /* phone_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_01@2x.png"; sourceTree = "<group>"; };
 		B878EE931953BB1500C43583 /* plan_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plan_01.png; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				B86616A919A01CE8009AFAEB /* addImage.png */,
 				B86616AA19A01CE9009AFAEB /* IQFeedbackView.h */,
 				B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */,
+				B86616B419A04A51009AFAEB /* FeRippleButton.h */,
+				B86616B519A04A51009AFAEB /* FeRippleButton.m */,
 				B86616A219A01265009AFAEB /* Windows */,
 				B8B0F4DF1952902500BE6929 /* AppDelegate.h */,
 				B8B0F4E01952902500BE6929 /* AppDelegate.m */,
@@ -723,6 +728,7 @@
 				B81AA2B819906403003028EB /* FeBasicAnimationBlock.m in Sources */,
 				B8A420C8198FD66F00D77DFB /* FormValidator.m in Sources */,
 				B81AA2A2199026E6003028EB /* GeneralControl.m in Sources */,
+				B86616B619A04A51009AFAEB /* FeRippleButton.m in Sources */,
 				B8B0F5101952905200BE6929 /* CollectionCell.m in Sources */,
 				B81AA2AE19902E29003028EB /* User.m in Sources */,
 				B8B0F53619529EE300BE6929 /* UIButton+Bootstrap.m in Sources */,

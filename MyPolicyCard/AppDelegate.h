@@ -12,8 +12,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIWindow *profileWindow;
+@property (strong, nonatomic) HaoWindow *profileWindow;
 @property (strong, nonatomic) HaoWindow *foregroundWindow;
 
+-(void)initLoginWindow;
 
 @end

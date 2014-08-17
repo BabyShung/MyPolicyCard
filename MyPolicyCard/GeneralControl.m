@@ -43,24 +43,63 @@
 }
 
 
-+(void)transitionToShowPlan:(UIViewController*)vc{
++(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate{
+    
+    NSLog(@"transitionToShowPlan ******");
     
     AppDelegate *appd =[[UIApplication sharedApplication] delegate];
     
-    appd.foregroundWindow = [[HaoWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    appd.foregroundWindow.rootViewController = [vc.storyboard instantiateViewControllerWithIdentifier:@"CardsNav"];
+    appd.foregroundWindow = [[HaoWindow alloc] initWithFrameAndGestures:[UIScreen mainScreen].bounds];
+    appd.foregroundWindow.rootViewController = [sb instantiateViewControllerWithIdentifier:@"CardsNav"];
     appd.foregroundWindow.windowLevel = UIWindowLevelStatusBar;
-    [appd.foregroundWindow makeKeyAndVisible];
     
+    if(animate){
+        [appd.foregroundWindow SlideInFromButtom];
+    }else{
+        [appd.foregroundWindow makeKeyAndVisible];
+    }
+
     
-    appd.profileWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    appd.profileWindow.rootViewController = [vc.storyboard instantiateViewControllerWithIdentifier:@"Profile"];
+    appd.profileWindow = [[HaoWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    appd.profileWindow.rootViewController = [sb instantiateViewControllerWithIdentifier:@"Profile"];
     appd.profileWindow.windowLevel = UIWindowLevelNormal + 50;
-    [appd.profileWindow makeKeyAndVisible];
     
+    [appd.profileWindow makeKeyAndVisible];
+    appd.profileWindow.alpha = 0;
+//
     //release the login window
-    appd.window = nil;
+    [UIView animateWithDuration:.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        appd.window.alpha = 0;
+    } completion:^(BOOL success){
+        appd.window = nil;
+    }];
+    
 }
+
++(void)transitionForLogout{
+    AppDelegate *appd =[[UIApplication sharedApplication] delegate];
+    
+    [appd initLoginWindow];
+    
+    [appd.profileWindow slideOutFromTop];
+    
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [appd.foregroundWindow slideOutFromTop];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            appd.foregroundWindow = nil;
+            appd.profileWindow = nil;
+        });
+    });
+    
+    
+    
+    
+}
+
 
 +(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name{
     [self transitionToVC:vc withToVCStoryboardId:name withDuration:0.8];
