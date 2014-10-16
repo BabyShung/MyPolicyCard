@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EDCollectionCell : UICollectionViewCell
+@interface PolicyCell : UICollectionViewCell
 
 @end

@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Heberti Almeida. All rights reserved.
 //
 
-#import "EDCollectionCell.h"
+#import "PolicyCell.h"
 
-@interface EDCollectionCell()
+@interface PolicyCell()
 
 @end
 
-@implementation EDCollectionCell
+@implementation PolicyCell
 
 - (id)initWithFrame:(CGRect)frame
 {

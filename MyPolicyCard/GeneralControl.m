@@ -22,6 +22,7 @@
         errorMsg = AMLocalizedString(@"ERROR_LOGIN", nil);
     }else{
         //general error
+        errorMsg = [error localizedDescription];
     }
     [self showAlertView:errorMsg withTextField:textfield];
 }
@@ -63,15 +64,18 @@
     appd.profileWindow = [[HaoWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     appd.profileWindow.rootViewController = [sb instantiateViewControllerWithIdentifier:@"Profile"];
     appd.profileWindow.windowLevel = UIWindowLevelNormal + 50;
-    
     [appd.profileWindow makeKeyAndVisible];
+    
+    //first making it invisible
     appd.profileWindow.alpha = 0;
-//
+
     //release the login window
     [UIView animateWithDuration:.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
         appd.window.alpha = 0;
     } completion:^(BOOL success){
-        appd.window = nil;
+        
+        appd.window.rootViewController = nil;
+        
     }];
     
 }
@@ -79,7 +83,9 @@
 +(void)transitionForLogout{
     AppDelegate *appd =[[UIApplication sharedApplication] delegate];
     
-    [appd initLoginWindow];
+    appd.window.alpha = 1;
+    
+    [appd initLoginVC];
     
     [appd.profileWindow slideOutFromTop];
     
@@ -95,9 +101,6 @@
         });
     });
     
-    
-    
-    
 }
 
 
@@ -110,7 +113,6 @@
     AppDelegate *appd = [[UIApplication sharedApplication] delegate];
     UIWindow *windooo = appd.foregroundWindow;
     UIViewController *fvc = [vc.storyboard instantiateViewControllerWithIdentifier:name];
-    //fvc.view.backgroundColor = [UIColor clearColor];
     [UIView transitionWithView:windooo
                       duration:duration
                        options:UIViewAnimationOptionCurveEaseOut

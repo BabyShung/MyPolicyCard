@@ -26,10 +26,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         
         self.alpha = 0;
-        
         self.backgroundColor = [UIColor clearColor];
         self.windowLevel = UIWindowLevelStatusBar + 1;
         
@@ -79,14 +77,12 @@
 -(void)showWindow{
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
-        
         [self makeKeyAndVisible];
         [self.loadingImage startAnimating];
         self.shimmeringView.shimmering = YES;
         self.alpha = 1;
         
     } completion:nil];
-
 }
 
 -(void)hideWindow{
@@ -99,8 +95,6 @@
         self.alpha = 0;
         
     } completion:nil];
-    
-
 }
 
 

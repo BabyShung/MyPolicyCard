@@ -45,7 +45,6 @@ const NSString *settingCellIdentity = @"Cell";
     [self.view insertSubview:backgroundView belowSubview:self.collectionView];
     self.collectionView.backgroundColor = [UIColor clearColor];
     
-    
     User *user = [User sharedInstance];
     
     self.profileData = [NSArray arrayWithObjects:
@@ -59,7 +58,6 @@ const NSString *settingCellIdentity = @"Cell";
                               [UIImage imageNamed:@"EDB_aboutus.png"],
                               nil];
 }
-
 
 #pragma mark - UICollectionViewDataSource Methods
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
@@ -85,7 +83,6 @@ const NSString *settingCellIdentity = @"Cell";
     [cell.profileButton addTarget:self action:@selector(clickCell:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
-    
 }
 
 -(void)clickCell:(id)sender{

@@ -36,18 +36,12 @@
 
 @implementation LoginViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
+    
     [super viewDidLoad];
     
-
-    
-    //[self checkUserInNSUserDefaultAndPerformLogin];
     [self loadControls];
 }
-
-
-
 
 - (IBAction)login:(UIButton *)sender {
     [self validateAllInputs];
@@ -73,14 +67,13 @@
                 
                 //[Flurry logEvent:@"Login_Succeed"];
                 
-                //transition
-                //[GeneralControl transitionToVC:self withToVCStoryboardId:@"CardNav" withDuration:0.5];
+                //transition my special window
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [GeneralControl transitionToShowPlan:self.storyboard withAnimation:YES];
+                    
+                    [self.notiWindow hideWindow];
+                });
                 
-                //my special window
-                [GeneralControl transitionToShowPlan:self.storyboard withAnimation:YES];
-
-                
-                [self.notiWindow hideWindow];
             }else{
                 //not success
                 [self.notiWindow hideWindow];
@@ -115,7 +108,6 @@
 
 -(void)goUpAnimation{
     if(self.bgScrollView.bounds.origin.y != SCROLLVIEW_CONTENTOFF_WhenClickTextfield){
-        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.bgScrollView setContentOffset:CGPointMake(0,SCROLLVIEW_CONTENTOFF_WhenClickTextfield) animated:YES];
         });

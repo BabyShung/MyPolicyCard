@@ -47,6 +47,7 @@ static BOOL hasAlreadyCachedKeyboard;
 
 +(void) __cacheKeyboard {
     UITextField *field = [UITextField new];
+    NSLog(@"[[[UIApplication sharedApplication] windows] lastObject]: %@",[[[UIApplication sharedApplication] windows] lastObject]);
     [[[[UIApplication sharedApplication] windows] lastObject] addSubview:field];
     [field becomeFirstResponder];
     [field resignFirstResponder];

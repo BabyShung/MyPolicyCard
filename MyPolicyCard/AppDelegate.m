@@ -18,17 +18,18 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [Parse setApplicationId:@"StSG8dSOBAuifnwNj4nSh22ppKK6smU3Ayh8864t"
                   clientKey:@"lYw5JetgqAcRM12QOURKjlguO0szzE52nBLP1Gdb"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     
+    //cache keyboard
+    [UIResponder cacheKeyboard];
     
+    self.myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    
-    
+    //use to check first or second login
     [self checkUserInNSUserDefaultAndPerformLogin];
     
 
@@ -37,30 +38,31 @@
 
 -(void)checkUserInNSUserDefaultAndPerformLogin{
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"]) {
+        //current user exists
         NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"];
         //from dictionary to User instance
         [User fromDictionaryToUser:dict];
         
-        [GeneralControl transitionToShowPlan:[UIStoryboard storyboardWithName:@"Main" bundle:nil] withAnimation:NO];
+        [GeneralControl transitionToShowPlan:self.myStoryboard withAnimation:NO];
         
-        NSLog(@"******************  Second Login: %@",[User sharedInstance]);
+        NSLog(@"Second Login: %@",[User sharedInstance]);
         
     }else{
+        //not exist, show login page
         [self initLoginWindow];
     }
 }
 
+-(void)initLoginVC{
+    self.window.rootViewController = [self.myStoryboard instantiateViewControllerWithIdentifier:@"Login"];
+    [self.window makeKeyAndVisible];
+}
+
 -(void)initLoginWindow{
     
-    //cache keyboard
-    [UIResponder cacheKeyboard];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
-    [self.window makeKeyAndVisible];
-
+    self.window.windowLevel = UIWindowLevelNormal;
+    [self initLoginVC];
 }
 
 							

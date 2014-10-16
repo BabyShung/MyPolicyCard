@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 Hao Zheng. All rights reserved.
 //
 
-#import "helloViewController.h"
+#import "MainViewController.h"
 #import "SecondViewController.h"
 #import "largeLayout.h"
-#import "EDCollectionCell.h"
+#import "PolicyCell.h"
 
-@interface helloViewController () 
+@interface MainViewController () 
 
 
 @end
 
 static NSString *CellIdentifier = @"Cell";
 
-@implementation helloViewController
+@implementation MainViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
+    
     [super viewDidLoad];
     
     [self loadControls];
@@ -30,7 +30,7 @@ static NSString *CellIdentifier = @"Cell";
 
 -(void)loadControls{
     //registering dequueue cell
-    [self.collectionView registerClass:[EDCollectionCell class] forCellWithReuseIdentifier:CellIdentifier];
+    [self.collectionView registerClass:[PolicyCell class] forCellWithReuseIdentifier:CellIdentifier];
     self.collectionView.backgroundColor = [UIColor grayColor];
     self.collectionView.layer.cornerRadius = 6.0f;
     [self.collectionView setContentInset:UIEdgeInsetsMake(-20, 0, 0, 0)];//fix bug for nav, status bar 20px 
@@ -47,7 +47,7 @@ static NSString *CellIdentifier = @"Cell";
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    EDCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    PolicyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     return cell;
 }
 
@@ -66,8 +66,5 @@ static NSString *CellIdentifier = @"Cell";
     return UIStatusBarStyleLightContent;
 }
 
-//-(BOOL)prefersStatusBarHidden{
-//    return YES;
-//}
 
 @end
