@@ -15,4 +15,6 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#define DeviceScreenHeight (CGRectGetHeight([[UIScreen mainScreen] bounds]))
+#define DeviceScreenWidth (CGRectGetWidth([[UIScreen mainScreen] bounds]))
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)

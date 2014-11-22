@@ -64,6 +64,7 @@
 		B8A420BB198FD24900D77DFB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A420BA198FD24900D77DFB /* StoreKit.framework */; };
 		B8A420BD198FD25100D77DFB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A420BC198FD25100D77DFB /* SystemConfiguration.framework */; };
 		B8A420C8198FD66F00D77DFB /* FormValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A420C6198FD66E00D77DFB /* FormValidator.m */; };
+		B8AA0F531A20383E00C5992E /* MovingBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA0F521A20383E00C5992E /* MovingBehavior.m */; };
 		B8B0F4D11952902500BE6929 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B0F4D01952902500BE6929 /* Foundation.framework */; };
 		B8B0F4D31952902500BE6929 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B0F4D21952902500BE6929 /* CoreGraphics.framework */; };
 		B8B0F4D51952902500BE6929 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B0F4D41952902500BE6929 /* UIKit.framework */; };
@@ -199,6 +200,8 @@
 		B8A420BC198FD25100D77DFB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B8A420C6198FD66E00D77DFB /* FormValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormValidator.m; sourceTree = "<group>"; };
 		B8A420C7198FD66F00D77DFB /* FormValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormValidator.h; sourceTree = "<group>"; };
+		B8AA0F511A20383E00C5992E /* MovingBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingBehavior.h; sourceTree = "<group>"; };
+		B8AA0F521A20383E00C5992E /* MovingBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovingBehavior.m; sourceTree = "<group>"; };
 		B8B0F4CD1952902500BE6929 /* MyPolicyCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPolicyCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B0F4D01952902500BE6929 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B8B0F4D21952902500BE6929 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -447,6 +450,8 @@
 		B8B0F4D61952902500BE6929 /* MyPolicyCard */ = {
 			isa = PBXGroup;
 			children = (
+				B8AA0F511A20383E00C5992E /* MovingBehavior.h */,
+				B8AA0F521A20383E00C5992E /* MovingBehavior.m */,
 				B8B0F53319529C5900BE6929 /* LoginPage */,
 				B8B0F5051952904B00BE6929 /* MainPage */,
 				B8B0F53D1953A23800BE6929 /* Objects */,
@@ -761,6 +766,7 @@
 				B878EEAC1953E54A00C43583 /* AnimateLabel.m in Sources */,
 				B8B0F5441953A97A00BE6929 /* FBShimmeringView.m in Sources */,
 				B86616AF19A01CE9009AFAEB /* IQFeedbackView.m in Sources */,
+				B8AA0F531A20383E00C5992E /* MovingBehavior.m in Sources */,
 				B8B0F52419529BE800BE6929 /* LoginViewController.m in Sources */,
 				B878EEA51953D52000C43583 /* RQShineLabel.m in Sources */,
 				B89CC7FE199D933D004FEB7A /* ProfileViewController.m in Sources */,

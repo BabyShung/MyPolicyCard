@@ -10,41 +10,29 @@
 	<string>MyPolicyCard</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>67772E5F-213C-4BCF-92FE-425EA63F0C53</key>
+		<key>ED095D42C21F4BDC4C5604FF88EC7CB6D824ECA4</key>
 		<string>https://github.com/BabyShung/MyPolicyCard.git</string>
-		<key>B6755F38-0ED9-4FB6-ADEE-30D0C90429F8</key>
-		<string>https://github.com/BabyShung/HaoCameraDemo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MyPolicyCard.xcodeproj/project.xcworkspace</string>
+	<string>MyPolicyCard.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>67772E5F-213C-4BCF-92FE-425EA63F0C53</key>
+		<key>ED095D42C21F4BDC4C5604FF88EC7CB6D824ECA4</key>
 		<string>../..</string>
-		<key>B6755F38-0ED9-4FB6-ADEE-30D0C90429F8</key>
-		<string>../../../HaoCameraDemo</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/BabyShung/MyPolicyCard.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>67772E5F-213C-4BCF-92FE-425EA63F0C53</string>
+	<string>ED095D42C21F4BDC4C5604FF88EC7CB6D824ECA4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B6755F38-0ED9-4FB6-ADEE-30D0C90429F8</string>
-			<key>IDESourceControlWCCName</key>
-			<string>HaoCameraDemo</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>67772E5F-213C-4BCF-92FE-425EA63F0C53</string>
+			<string>ED095D42C21F4BDC4C5604FF88EC7CB6D824ECA4</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MyPolicyCard</string>
 		</dict>

@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "AnimateLabel.h"
+
 #import "UIButton+Bootstrap.h"
 #import "GeneralControl.h"
 #import "User.h"
@@ -15,32 +15,73 @@
 #import "NSUserDefaultControls.h"
 #import "UIButton+ResponsiveInteraction.h"
 
-#import "notifyWindow.h"
 #import "HaoWindow.h"
 #import "AppDelegate.h"
+#import "MovingBehavior.h"
 
-#import <Parse/Parse.h>
-
+#define USER_PWD_VIEW_MARGIN 10
 #define SCROLLVIEW_CONTENTOFF_WhenClickTextfield 180
 
 @interface LoginViewController ()
 
-@property (weak, nonatomic) IBOutlet AnimateLabel *animatedLabel;
-@property (weak, nonatomic) IBOutlet UIView *logoView;
-@property (weak, nonatomic) IBOutlet UIView *userView;
-@property (weak, nonatomic) IBOutlet UIView *pwdView;
-@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
-@property (nonatomic,strong) notifyWindow *notiWindow;
+@property (nonatomic, strong) UIDynamicAnimator *mainAnimator;
+
+@property (nonatomic, strong) MovingBehavior *movingBehavior;
 
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad{
-    
     [super viewDidLoad];
-    
     [self loadControls];
+}
+
+-(void)loadControls{
+    _mainAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
+    
+    _userView.center = CGPointMake(DeviceScreenWidth/2, -100);
+    _pwdView.center = CGPointMake(DeviceScreenWidth/2, -100 + USER_PWD_VIEW_MARGIN);
+    _loginBtn.center = CGPointMake(DeviceScreenWidth/2, DeviceScreenHeight+100);
+    
+    [_loginBtn primaryStyle];
+    [_loginBtn activeResponsiveInteraction];
+    [_loginBtn setGlobalResponsiveInteractionWithView:self.view];
+    
+    //animate label
+    [_animatedLabel animateWithWords:@[@"PolicyApp",@"Like it?"] forDuration:3.0f];
+    
+    _logoView.layer.cornerRadius = 80.0f;
+    _userView.layer.cornerRadius = 8;
+    _pwdView.layer.cornerRadius = 8;
+    _userTextField.delegate = self;
+    _pwdTextField.delegate = self;
+    [_userTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_pwdTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_userTextField setKeyboardType:UIKeyboardTypeEmailAddress];
+    _pwdTextField.secureTextEntry = YES;
+    
+    //GESTURE - Dismiss the keyboard when tapped on the controller's view
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(MySingleTap:)];
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    if (!_movingBehavior) {
+        _movingBehavior = [[MovingBehavior alloc] initWithItem:_loginBtn];
+    }
+    MovingBehavior *userMB = [[MovingBehavior alloc] initWithItem:_userView];
+    MovingBehavior *pwdMB = [[MovingBehavior alloc] initWithItem:_pwdView];
+    
+    userMB.targetPoint = CGPointMake(DeviceScreenWidth/2, 200);
+    pwdMB.targetPoint = CGPointMake(DeviceScreenWidth/2, 200 + USER_PWD_VIEW_MARGIN + CGRectGetHeight(_pwdView.frame));
+    
+    _movingBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, DeviceScreenHeight - 200);
+    
+    //once added, it will effect
+    [_mainAnimator addBehavior:_movingBehavior];
+    [_mainAnimator addBehavior:userMB];
+    [_mainAnimator addBehavior:pwdMB];
 }
 
 - (IBAction)login:(UIButton *)sender {
@@ -49,40 +90,34 @@
 
 -(void)validateAllInputs{
     FormValidator *validate=[[FormValidator alloc] init];
-    [validate Email:self.userTextField.text andUsername:nil andPwd:self.pwdTextField.text];
+    [validate Email:_userTextField.text andUsername:nil andPwd:_pwdTextField.text];
     if([validate isValid]){    //success
-        //[Flurry logEvent:@"Read_TO_Login"];
-        
         [self.view endEditing:YES];
-        [self.notiWindow showWindow];
+        [_notiWindow showWindow];
         
         //********************* user login *******************************
         
-        [User logInWithUsername:self.userTextField.text andPassword:self.pwdTextField.text WithCompletion:^(NSError *error,BOOL success){
+        [User logInWithUsername:_userTextField.text andPassword:_pwdTextField.text WithCompletion:^(NSError *error,BOOL success){
             if(success){
                 //save into NSUserDefault
                 [NSUserDefaultControls saveUserDictionaryIntoNSUserDefault_dict:[User toDictionary] andKey:@"CurrentUser"];
                 
                 NSLog(@"%@",[User sharedInstance]);
                 
-                //[Flurry logEvent:@"Login_Succeed"];
-                
                 //transition my special window
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [GeneralControl transitionToShowPlan:self.storyboard withAnimation:YES];
                     
-                    [self.notiWindow hideWindow];
+                    [_notiWindow hideWindow];
                 });
                 
             }else{
                 //not success
-                [self.notiWindow hideWindow];
+                [_notiWindow hideWindow];
                 
-                [GeneralControl showError:error withTextField:self.pwdTextField];
+                [GeneralControl showError:error withTextField:_pwdTextField];
             }
         }];
-        
-        
     }else{  //validator failure
         NSString *errorString = [[validate errorMsg] componentsJoinedByString: @"\n"];
         [GeneralControl showErrorMsg:errorString withTextField:nil];
@@ -90,37 +125,20 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    if(theTextField == self.userTextField){
-        [self.pwdTextField becomeFirstResponder];
-    }else if(theTextField == self.pwdTextField){
+    if(theTextField == _userTextField){
+        [_pwdTextField becomeFirstResponder];
+    }else if(theTextField == _pwdTextField){
         [self validateAllInputs];
     }
     return NO;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    [self goUpAnimation];
+
 }
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{
-    [self goDownAnimation];
-}
-
--(void)goUpAnimation{
-    if(self.bgScrollView.bounds.origin.y != SCROLLVIEW_CONTENTOFF_WhenClickTextfield){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.bgScrollView setContentOffset:CGPointMake(0,SCROLLVIEW_CONTENTOFF_WhenClickTextfield) animated:YES];
-        });
-    }
-}
-
--(void)goDownAnimation{
-    if(self.bgScrollView.bounds.origin.y != 0){
-        [self.bgScrollView setContentOffset:CGPointMake(0,0) animated:YES];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.view endEditing:YES];
-        });
-    }
+    
 }
 
 -(notifyWindow*)notiWindow{
@@ -128,35 +146,6 @@
         _notiWindow = [[notifyWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
     return _notiWindow;
-}
-
--(void)loadControls{
-    [self.loginBtn primaryStyle];
-    // Active effect
-
-    [self.loginBtn activeResponsiveInteraction];
-    [self.loginBtn setGlobalResponsiveInteractionWithView:self.view];
-    
-    //animate label
-    [self.animatedLabel animateWithWords:@[@"PolicyApp",@"Like it?"] forDuration:3.0f];
-    
-    self.logoView.layer.cornerRadius = 80.0f;
-    
-    self.userView.layer.cornerRadius = 8;
-    self.pwdView.layer.cornerRadius = 8;
-    
-    self.userTextField.delegate = self;
-    self.pwdTextField.delegate = self;
-    
-    [self.userTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.pwdTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-    
-    [self.userTextField setKeyboardType:UIKeyboardTypeEmailAddress];
-    self.pwdTextField.secureTextEntry = YES;
-    
-    //GESTURE - Dismiss the keyboard when tapped on the controller's view
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(MySingleTap:)];
-    [self.view addGestureRecognizer:tap];
 }
 
 -(BOOL)prefersStatusBarHidden{

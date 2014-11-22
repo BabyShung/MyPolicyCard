@@ -6,18 +6,17 @@
 //  Copyright (c) 2014 Hao Zheng. All rights reserved.
 //
 
-
-#import <UIKit/UIKit.h>
+#import "AnimateLabel.h"
+#import "notifyWindow.h"
 
 @interface LoginViewController : UIViewController <UIGestureRecognizerDelegate,UITextFieldDelegate>
-
-
-@property (strong, nonatomic) UIView *sendButtonView;
-
+@property (weak, nonatomic) IBOutlet AnimateLabel *animatedLabel;
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
-
+@property (weak, nonatomic) IBOutlet UIView *logoView;
+@property (weak, nonatomic) IBOutlet UIView *userView;
+@property (weak, nonatomic) IBOutlet UIView *pwdView;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
-
+@property (nonatomic,strong) notifyWindow *notiWindow;
 @end
