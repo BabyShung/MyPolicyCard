@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSUserDefaultControls : NSObject
+@interface UserDefaultHelper : NSObject
 
 +(void)saveUserDictionaryIntoNSUserDefault_dict:(NSDictionary *)dict andKey:(NSString *)key;
 
 +(BOOL)isFirstLaunch;
 
 +(void)userFinishFirstLaunch;
+
++(NSDictionary *)getCurrentUser;
 
 @end

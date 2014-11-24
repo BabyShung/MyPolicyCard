@@ -12,6 +12,9 @@
 #import "AppDelegate.h"
 #import "HaoWindow.h"
 
+
+#import "TLAlertView.h"
+
 @implementation GeneralControl
 
 +(void)showError:(NSError *)error withTextField:(UITextField *)textfield{
@@ -31,18 +34,34 @@
     [self showAlertView:msg withTextField:textfield];
 }
 
+
+static TLAlertView *alert;
+
 +(void)showAlertView:(NSString *)msg withTextField:(UITextField *)textfield{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg delegate:nil cancelButtonTitle:AMLocalizedString(@"Cancel", nil) otherButtonTitles: nil];
-    [alert showWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == [alertView cancelButtonIndex]) {
-            if(textfield){
-                textfield.text = @"";
-                [textfield becomeFirstResponder];
-            }
+    
+    alert = [[TLAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg buttonTitle:AMLocalizedString(@"Cancel", nil) handler:^(TLAlertView *alertView) {
+        if(textfield){
+            textfield.text = @"";
+            [textfield becomeFirstResponder];
         }
     }];
+    [alert show];
+    
+    
+//    haoAlertView *alert = [[haoAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg delegate:nil cancelButtonTitle:AMLocalizedString(@"Cancel", nil) otherButtonTitles: nil];
+//    [alert show];
+    
+    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg delegate:nil cancelButtonTitle:AMLocalizedString(@"Cancel", nil) otherButtonTitles: nil];
+//    [alert showWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+//        if (buttonIndex == [alertView cancelButtonIndex]) {
+//            if(textfield){
+//                textfield.text = @"";
+//                [textfield becomeFirstResponder];
+//            }
+//        }
+//    }];
 }
-
 
 +(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate{
     
@@ -88,8 +107,6 @@
     [appd initLoginVC];
     
     [appd.profileWindow slideOutFromTop];
-    
-    
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         

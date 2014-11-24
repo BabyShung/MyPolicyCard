@@ -12,7 +12,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIStoryboard *myStoryboard;
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) HaoWindow *window;
 @property (strong, nonatomic) HaoWindow *profileWindow;
 @property (strong, nonatomic) HaoWindow *foregroundWindow;
 

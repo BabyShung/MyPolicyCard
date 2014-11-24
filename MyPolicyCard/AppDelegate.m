@@ -12,7 +12,7 @@
 #import "CardsOldViewController.h"
 #import "User.h"
 #import "GeneralControl.h"
-
+#import "UserDefaultHelper.h"
 
 #import "UIResponder+KeyboardCache.h"
 
@@ -23,34 +23,38 @@
                   clientKey:@"lYw5JetgqAcRM12QOURKjlguO0szzE52nBLP1Gdb"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    
-    //cache keyboard
+        //cache keyboard
     [UIResponder cacheKeyboard];
     
     self.myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     //use to check first or second login
-    [self checkUserInNSUserDefaultAndPerformLogin];
+    [self checkUserDefaultAndPerformLogin];
     
-
     return YES;
 }
 
--(void)checkUserInNSUserDefaultAndPerformLogin{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"]) {
-        //current user exists
-        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"];
-        //from dictionary to User instance
-        [User fromDictionaryToUser:dict];
+-(void)checkUserDefaultAndPerformLogin{
+    
+    NSDictionary *currentUser = [UserDefaultHelper getCurrentUser];
+    if(currentUser){
+        //from dictionary to User instance + init
+        [User fromDictionaryToUser:currentUser];
         
         [GeneralControl transitionToShowPlan:self.myStoryboard withAnimation:NO];
         
         NSLog(@"Second Login: %@",[User sharedInstance]);
-        
+    
     }else{
         //not exist, show login page
         [self initLoginWindow];
     }
+}
+
+-(void)initLoginWindow{
+    self.window = [[HaoWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.windowLevel = UIWindowLevelNormal;
+    [self initLoginVC];
 }
 
 -(void)initLoginVC{
@@ -58,14 +62,6 @@
     [self.window makeKeyAndVisible];
 }
 
--(void)initLoginWindow{
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.windowLevel = UIWindowLevelNormal;
-    [self initLoginVC];
-}
-
-							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 }

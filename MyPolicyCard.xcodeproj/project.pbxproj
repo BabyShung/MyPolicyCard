@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B81AA283199015C4003028EB /* UIResponder+KeyboardCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA282199015C4003028EB /* UIResponder+KeyboardCache.m */; };
 		B81AA286199016A8003028EB /* LocalizationSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA285199016A8003028EB /* LocalizationSystem.m */; };
 		B81AA294199019AF003028EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B81AA296199019AF003028EB /* Localizable.strings */; };
-		B81AA2A1199026E6003028EB /* NSUserDefaultControls.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA29E199026E6003028EB /* NSUserDefaultControls.m */; };
+		B81AA2A1199026E6003028EB /* UserDefaultHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA29E199026E6003028EB /* UserDefaultHelper.m */; };
 		B81AA2A2199026E6003028EB /* GeneralControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA2A0199026E6003028EB /* GeneralControl.m */; };
 		B81AA2A9199027B4003028EB /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA2A4199027B4003028EB /* UIAlertView+Blocks.m */; };
 		B81AA2AA199027B4003028EB /* edi_md5.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA2A6199027B4003028EB /* edi_md5.m */; };
@@ -22,6 +21,8 @@
 		B81AA2BB19907823003028EB /* LoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA2BA19907823003028EB /* LoadingAnimation.m */; };
 		B81AA2C619912FD4003028EB /* bgProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = B81AA2C419912FD4003028EB /* bgProfile.png */; };
 		B81AA2C719912FD4003028EB /* bgLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = B81AA2C519912FD4003028EB /* bgLogin.png */; };
+		B83578051A22756B00661030 /* TLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83578041A22756B00661030 /* TLAlertView.m */; };
+		B83578401A22CE5400661030 /* AlertViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B835783F1A22CE5400661030 /* AlertViewWindow.m */; };
 		B86616AE19A01CE9009AFAEB /* addImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B86616A919A01CE8009AFAEB /* addImage.png */; };
 		B86616AF19A01CE9009AFAEB /* IQFeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */; };
 		B86616B319A0281B009AFAEB /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B86616B219A0281B009AFAEB /* UIView+Toast.m */; };
@@ -65,6 +66,7 @@
 		B8A420BD198FD25100D77DFB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A420BC198FD25100D77DFB /* SystemConfiguration.framework */; };
 		B8A420C8198FD66F00D77DFB /* FormValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A420C6198FD66E00D77DFB /* FormValidator.m */; };
 		B8AA0F531A20383E00C5992E /* MovingBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA0F521A20383E00C5992E /* MovingBehavior.m */; };
+		B8AA0F911A2260D900C5992E /* UIResponder+KeyboardCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA0F901A2260D900C5992E /* UIResponder+KeyboardCache.m */; };
 		B8B0F4D11952902500BE6929 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B0F4D01952902500BE6929 /* Foundation.framework */; };
 		B8B0F4D31952902500BE6929 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B0F4D21952902500BE6929 /* CoreGraphics.framework */; };
 		B8B0F4D51952902500BE6929 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B0F4D41952902500BE6929 /* UIKit.framework */; };
@@ -109,8 +111,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B81AA281199015C4003028EB /* UIResponder+KeyboardCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+KeyboardCache.h"; sourceTree = "<group>"; };
-		B81AA282199015C4003028EB /* UIResponder+KeyboardCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+KeyboardCache.m"; sourceTree = "<group>"; };
 		B81AA284199016A8003028EB /* LocalizationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationSystem.h; sourceTree = "<group>"; };
 		B81AA285199016A8003028EB /* LocalizationSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationSystem.m; sourceTree = "<group>"; };
 		B81AA29719901B6E003028EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 		B81AA29919901B6E003028EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B81AA29A19901B6E003028EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B81AA29C19901BA8003028EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		B81AA29D199026E6003028EB /* NSUserDefaultControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultControls.h; sourceTree = "<group>"; };
-		B81AA29E199026E6003028EB /* NSUserDefaultControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultControls.m; sourceTree = "<group>"; };
+		B81AA29D199026E6003028EB /* UserDefaultHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultHelper.h; sourceTree = "<group>"; };
+		B81AA29E199026E6003028EB /* UserDefaultHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultHelper.m; sourceTree = "<group>"; };
 		B81AA29F199026E6003028EB /* GeneralControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralControl.h; sourceTree = "<group>"; };
 		B81AA2A0199026E6003028EB /* GeneralControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralControl.m; sourceTree = "<group>"; };
 		B81AA2A3199027B4003028EB /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
@@ -141,6 +141,10 @@
 		B81AA2BA19907823003028EB /* LoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAnimation.m; sourceTree = "<group>"; };
 		B81AA2C419912FD4003028EB /* bgProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgProfile.png; sourceTree = "<group>"; };
 		B81AA2C519912FD4003028EB /* bgLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgLogin.png; sourceTree = "<group>"; };
+		B83578031A22756B00661030 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAlertView.h; sourceTree = "<group>"; };
+		B83578041A22756B00661030 /* TLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAlertView.m; sourceTree = "<group>"; };
+		B835783E1A22CE5400661030 /* AlertViewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewWindow.h; sourceTree = "<group>"; };
+		B835783F1A22CE5400661030 /* AlertViewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewWindow.m; sourceTree = "<group>"; };
 		B86616A919A01CE8009AFAEB /* addImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addImage.png; path = ../addImage.png; sourceTree = "<group>"; };
 		B86616AA19A01CE9009AFAEB /* IQFeedbackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IQFeedbackView.h; path = ../IQFeedbackView.h; sourceTree = "<group>"; };
 		B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IQFeedbackView.m; path = ../IQFeedbackView.m; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 		B8A420C7198FD66F00D77DFB /* FormValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormValidator.h; sourceTree = "<group>"; };
 		B8AA0F511A20383E00C5992E /* MovingBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingBehavior.h; sourceTree = "<group>"; };
 		B8AA0F521A20383E00C5992E /* MovingBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovingBehavior.m; sourceTree = "<group>"; };
+		B8AA0F8F1A2260D900C5992E /* UIResponder+KeyboardCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+KeyboardCache.h"; sourceTree = "<group>"; };
+		B8AA0F901A2260D900C5992E /* UIResponder+KeyboardCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+KeyboardCache.m"; sourceTree = "<group>"; };
 		B8B0F4CD1952902500BE6929 /* MyPolicyCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPolicyCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B0F4D01952902500BE6929 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B8B0F4D21952902500BE6929 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -301,10 +307,10 @@
 			children = (
 				B81AA2B919907822003028EB /* LoadingAnimation.h */,
 				B81AA2BA19907823003028EB /* LoadingAnimation.m */,
-				B81AA281199015C4003028EB /* UIResponder+KeyboardCache.h */,
-				B81AA282199015C4003028EB /* UIResponder+KeyboardCache.m */,
 				B8A420C7198FD66F00D77DFB /* FormValidator.h */,
 				B8A420C6198FD66E00D77DFB /* FormValidator.m */,
+				B8AA0F8F1A2260D900C5992E /* UIResponder+KeyboardCache.h */,
+				B8AA0F901A2260D900C5992E /* UIResponder+KeyboardCache.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -367,8 +373,8 @@
 			isa = PBXGroup;
 			children = (
 				B81AA2C9199678A0003028EB /* responsiveBtn */,
-				B81AA29D199026E6003028EB /* NSUserDefaultControls.h */,
-				B81AA29E199026E6003028EB /* NSUserDefaultControls.m */,
+				B81AA29D199026E6003028EB /* UserDefaultHelper.h */,
+				B81AA29E199026E6003028EB /* UserDefaultHelper.m */,
 				B81AA29F199026E6003028EB /* GeneralControl.h */,
 				B81AA2A0199026E6003028EB /* GeneralControl.m */,
 				B8B0F5461953B31000BE6929 /* LoadControls.h */,
@@ -407,6 +413,10 @@
 			children = (
 				B8B0F4DF1952902500BE6929 /* AppDelegate.h */,
 				B8B0F4E01952902500BE6929 /* AppDelegate.m */,
+				B835783E1A22CE5400661030 /* AlertViewWindow.h */,
+				B835783F1A22CE5400661030 /* AlertViewWindow.m */,
+				B83578031A22756B00661030 /* TLAlertView.h */,
+				B83578041A22756B00661030 /* TLAlertView.m */,
 				B8B0F4E21952902500BE6929 /* Main.storyboard */,
 				B81AA29B19901B7F003028EB /* Localization */,
 				B86616A219A01265009AFAEB /* Windows */,
@@ -660,7 +670,7 @@
 				ORGANIZATIONNAME = "Hao Zheng";
 				TargetAttributes = {
 					B8B0F4CC1952902500BE6929 = {
-						DevelopmentTeam = 2QU346BL3Y;
+						DevelopmentTeam = 2GZK3GQWD5;
 					};
 					B8B0F4ED1952902600BE6929 = {
 						TestTargetID = B8B0F4CC1952902500BE6929;
@@ -749,7 +759,7 @@
 				B86616B319A0281B009AFAEB /* UIView+Toast.m in Sources */,
 				B89CC811199D937F004FEB7A /* PolicyCell.m in Sources */,
 				B81AA2B519906331003028EB /* UIColor+flat.m in Sources */,
-				B81AA283199015C4003028EB /* UIResponder+KeyboardCache.m in Sources */,
+				B83578051A22756B00661030 /* TLAlertView.m in Sources */,
 				B89CC827199DBFC2004FEB7A /* HaoWindow.m in Sources */,
 				B8D759C119A1B48D008050A6 /* Company.m in Sources */,
 				B81AA2B819906403003028EB /* FeBasicAnimationBlock.m in Sources */,
@@ -757,15 +767,17 @@
 				B81AA2A2199026E6003028EB /* GeneralControl.m in Sources */,
 				B86616B619A04A51009AFAEB /* FeRippleButton.m in Sources */,
 				B8B0F5101952905200BE6929 /* CollectionCell.m in Sources */,
+				B8AA0F911A2260D900C5992E /* UIResponder+KeyboardCache.m in Sources */,
 				B81AA2AE19902E29003028EB /* User.m in Sources */,
 				B8B0F53619529EE300BE6929 /* UIButton+Bootstrap.m in Sources */,
-				B81AA2A1199026E6003028EB /* NSUserDefaultControls.m in Sources */,
+				B81AA2A1199026E6003028EB /* UserDefaultHelper.m in Sources */,
 				B8B0F50E1952905200BE6929 /* CardsOldViewController.m in Sources */,
 				B81AA2B2199062FE003028EB /* UIButton+ResponsiveInteraction.m in Sources */,
 				B89CC819199D95E2004FEB7A /* MainViewController.m in Sources */,
 				B878EEAC1953E54A00C43583 /* AnimateLabel.m in Sources */,
 				B8B0F5441953A97A00BE6929 /* FBShimmeringView.m in Sources */,
 				B86616AF19A01CE9009AFAEB /* IQFeedbackView.m in Sources */,
+				B83578401A22CE5400661030 /* AlertViewWindow.m in Sources */,
 				B8AA0F531A20383E00C5992E /* MovingBehavior.m in Sources */,
 				B8B0F52419529BE800BE6929 /* LoginViewController.m in Sources */,
 				B878EEA51953D52000C43583 /* RQShineLabel.m in Sources */,

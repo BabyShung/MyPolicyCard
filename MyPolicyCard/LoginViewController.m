@@ -12,12 +12,15 @@
 #import "GeneralControl.h"
 #import "User.h"
 #import "FormValidator.h"
-#import "NSUserDefaultControls.h"
+#import "UserDefaultHelper.h"
 #import "UIButton+ResponsiveInteraction.h"
 
 #import "HaoWindow.h"
 #import "AppDelegate.h"
 #import "MovingBehavior.h"
+
+#import "TLAlertView.h"
+
 
 #define USER_PWD_VIEW_MARGIN 10
 #define SCROLLVIEW_CONTENTOFF_WhenClickTextfield 180
@@ -26,7 +29,9 @@
 
 @property (nonatomic, strong) UIDynamicAnimator *mainAnimator;
 
-@property (nonatomic, strong) MovingBehavior *movingBehavior;
+@property (nonatomic, strong) MovingBehavior *loginBtnBehavior;
+@property (nonatomic, strong) MovingBehavior *userViewBehavior;
+@property (nonatomic, strong) MovingBehavior *pwdViewBehavior;
 
 @end
 
@@ -67,24 +72,23 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    if (!_movingBehavior) {
-        _movingBehavior = [[MovingBehavior alloc] initWithItem:_loginBtn];
-    }
-    MovingBehavior *userMB = [[MovingBehavior alloc] initWithItem:_userView];
-    MovingBehavior *pwdMB = [[MovingBehavior alloc] initWithItem:_pwdView];
+    _loginBtnBehavior = [[MovingBehavior alloc] initWithItem:_loginBtn];
+    _userViewBehavior = [[MovingBehavior alloc] initWithItem:_userView];
+    _pwdViewBehavior = [[MovingBehavior alloc] initWithItem:_pwdView];
     
-    userMB.targetPoint = CGPointMake(DeviceScreenWidth/2, 200);
-    pwdMB.targetPoint = CGPointMake(DeviceScreenWidth/2, 200 + USER_PWD_VIEW_MARGIN + CGRectGetHeight(_pwdView.frame));
-    
-    _movingBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, DeviceScreenHeight - 200);
+    _userViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 200);
+    _pwdViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 200 + USER_PWD_VIEW_MARGIN + CGRectGetHeight(_pwdView.frame));
+    _loginBtnBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, DeviceScreenHeight - 200);
     
     //once added, it will effect
-    [_mainAnimator addBehavior:_movingBehavior];
-    [_mainAnimator addBehavior:userMB];
-    [_mainAnimator addBehavior:pwdMB];
+    [_mainAnimator addBehavior:_loginBtnBehavior];
+    [_mainAnimator addBehavior:_userViewBehavior];
+    [_mainAnimator addBehavior:_pwdViewBehavior];
 }
 
 - (IBAction)login:(UIButton *)sender {
+    TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Title" message:@"Message!!!" buttonTitle:@"OK"];
+    [alertView show];
     [self validateAllInputs];
 }
 
@@ -100,7 +104,7 @@
         [User logInWithUsername:_userTextField.text andPassword:_pwdTextField.text WithCompletion:^(NSError *error,BOOL success){
             if(success){
                 //save into NSUserDefault
-                [NSUserDefaultControls saveUserDictionaryIntoNSUserDefault_dict:[User toDictionary] andKey:@"CurrentUser"];
+                [UserDefaultHelper saveUserDictionaryIntoNSUserDefault_dict:[User toDictionary] andKey:@"CurrentUser"];
                 
                 NSLog(@"%@",[User sharedInstance]);
                 
@@ -134,11 +138,11 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-
+    _userViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 190);
 }
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{
-    
+    [self.view endEditing:YES];
 }
 
 -(notifyWindow*)notiWindow{

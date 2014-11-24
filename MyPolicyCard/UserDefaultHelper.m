@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Hao Zheng. All rights reserved.
 //
 
-#import "NSUserDefaultControls.h"
+#import "UserDefaultHelper.h"
 
-@implementation NSUserDefaultControls
+@implementation UserDefaultHelper
 
 +(void)saveUserDictionaryIntoNSUserDefault_dict:(NSDictionary *)dict andKey:(NSString *)key{
     [[NSUserDefaults standardUserDefaults] setObject:dict forKey:key];
@@ -24,6 +24,10 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstLaunch"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+}
+
++(NSDictionary *)getCurrentUser{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"]?[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentUser"]:nil;
 }
 
 @end
