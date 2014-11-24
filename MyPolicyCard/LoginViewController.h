@@ -7,7 +7,6 @@
 //
 
 #import "AnimateLabel.h"
-#import "notifyWindow.h"
 
 @interface LoginViewController : UIViewController <UIGestureRecognizerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet AnimateLabel *animatedLabel;
@@ -18,5 +17,4 @@
 @property (weak, nonatomic) IBOutlet UIView *pwdView;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
-@property (nonatomic,strong) notifyWindow *notiWindow;
 @end

@@ -13,13 +13,9 @@
 #import "User.h"
 #import "FormValidator.h"
 #import "UserDefaultHelper.h"
-#import "UIButton+ResponsiveInteraction.h"
 
-#import "HaoWindow.h"
 #import "AppDelegate.h"
 #import "MovingBehavior.h"
-
-#import "TLAlertView.h"
 
 
 #define USER_PWD_VIEW_MARGIN 10
@@ -43,15 +39,12 @@
 }
 
 -(void)loadControls{
-    _mainAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
     
     _userView.center = CGPointMake(DeviceScreenWidth/2, -100);
     _pwdView.center = CGPointMake(DeviceScreenWidth/2, -100 + USER_PWD_VIEW_MARGIN);
     _loginBtn.center = CGPointMake(DeviceScreenWidth/2, DeviceScreenHeight+100);
     
     [_loginBtn primaryStyle];
-    [_loginBtn activeResponsiveInteraction];
-    [_loginBtn setGlobalResponsiveInteractionWithView:self.view];
     
     //animate label
     [_animatedLabel animateWithWords:@[@"PolicyApp",@"Like it?"] forDuration:3.0f];
@@ -69,12 +62,16 @@
     //GESTURE - Dismiss the keyboard when tapped on the controller's view
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(MySingleTap:)];
     [self.view addGestureRecognizer:tap];
-}
-
--(void)viewDidAppear:(BOOL)animated{
+    
+    //uidynamics
+    _mainAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
     _loginBtnBehavior = [[MovingBehavior alloc] initWithItem:_loginBtn];
     _userViewBehavior = [[MovingBehavior alloc] initWithItem:_userView];
     _pwdViewBehavior = [[MovingBehavior alloc] initWithItem:_pwdView];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+
     
     _userViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 200);
     _pwdViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 200 + USER_PWD_VIEW_MARGIN + CGRectGetHeight(_pwdView.frame));
@@ -87,8 +84,6 @@
 }
 
 - (IBAction)login:(UIButton *)sender {
-//    TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Title" message:@"Message!!!" buttonTitle:@"OK"];
-//    [alertView show];
     [self validateAllInputs];
 }
 
@@ -97,7 +92,6 @@
     [validate Email:_userTextField.text andUsername:nil andPwd:_pwdTextField.text];
     if([validate isValid]){    //success
         [self.view endEditing:YES];
-        [_notiWindow showWindow];
         
         //********************* user login *******************************
         
@@ -111,13 +105,10 @@
                 //transition my special window
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [GeneralControl transitionToShowPlan:self.storyboard withAnimation:YES];
-                    
-                    [_notiWindow hideWindow];
                 });
                 
             }else{
                 //not success
-                [_notiWindow hideWindow];
                 
                 [GeneralControl showError:error withTextField:_pwdTextField];
             }
@@ -142,14 +133,7 @@
 }
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{
-    //[self.view endEditing:YES];
-}
-
--(notifyWindow*)notiWindow{
-    if(!_notiWindow){
-        _notiWindow = [[notifyWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    }
-    return _notiWindow;
+    [self.view endEditing:YES];
 }
 
 -(BOOL)prefersStatusBarHidden{

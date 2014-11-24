@@ -10,8 +10,6 @@
 #import "UIAlertView+Blocks.h"
 #import "LocalizationSystem.h"
 #import "AppDelegate.h"
-#import "HaoWindow.h"
-
 
 #import "TLAlertView.h"
 
@@ -34,24 +32,16 @@
     [self showAlertView:msg withTextField:textfield];
 }
 
-
-static TLAlertView *alert;
-
 +(void)showAlertView:(NSString *)msg withTextField:(UITextField *)textfield{
     
-    alert = [[TLAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg buttonTitle:AMLocalizedString(@"Cancel", nil) handler:^(TLAlertView *alertView) {
+    TLAlertView *alert = [[TLAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg buttonTitle:AMLocalizedString(@"Cancel", nil) handler:^(TLAlertView *alertView) {
         if(textfield){
             textfield.text = @"";
             [textfield becomeFirstResponder];
         }
     }];
     [alert show];
-    
-    
-//    haoAlertView *alert = [[haoAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg delegate:nil cancelButtonTitle:AMLocalizedString(@"Cancel", nil) otherButtonTitles: nil];
-//    [alert show];
-    
-    
+
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg delegate:nil cancelButtonTitle:AMLocalizedString(@"Cancel", nil) otherButtonTitles: nil];
 //    [alert showWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
 //        if (buttonIndex == [alertView cancelButtonIndex]) {
@@ -78,25 +68,26 @@ static TLAlertView *alert;
     }else{
         [appd.foregroundWindow makeKeyAndVisible];
     }
-
     
-    appd.profileWindow = [[HaoWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    appd.profileWindow.rootViewController = [sb instantiateViewControllerWithIdentifier:@"Profile"];
-    appd.profileWindow.windowLevel = UIWindowLevelNormal + 50;
-    [appd.profileWindow makeKeyAndVisible];
+    appd.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"Profile"];
     
-    //first making it invisible
-    appd.profileWindow.alpha = 0;
-
-    //release the login window
-    [UIView animateWithDuration:.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        appd.window.alpha = 0;
-    } completion:^(BOOL success){
-        
-        appd.window.rootViewController = nil;
-        
-    }];
     
+//    appd.profileWindow = [[HaoWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    appd.profileWindow.rootViewController = [sb instantiateViewControllerWithIdentifier:@"Profile"];
+//    appd.profileWindow.windowLevel = UIWindowLevelNormal + 50;
+//    [appd.profileWindow makeKeyAndVisible];
+//    
+//    //first making it invisible
+//    appd.profileWindow.alpha = 0;
+//
+//    //release the login window
+//    [UIView animateWithDuration:.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//        appd.window.alpha = 0;
+//    } completion:^(BOOL success){
+//        
+//        appd.window.rootViewController = nil;
+//        
+//    }];
 }
 
 +(void)transitionForLogout{
@@ -117,9 +108,7 @@ static TLAlertView *alert;
             appd.profileWindow = nil;
         });
     });
-    
 }
-
 
 +(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name{
     [self transitionToVC:vc withToVCStoryboardId:name withDuration:0.8];
