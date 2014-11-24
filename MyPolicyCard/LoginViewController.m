@@ -87,8 +87,8 @@
 }
 
 - (IBAction)login:(UIButton *)sender {
-    TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Title" message:@"Message!!!" buttonTitle:@"OK"];
-    [alertView show];
+//    TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Title" message:@"Message!!!" buttonTitle:@"OK"];
+//    [alertView show];
     [self validateAllInputs];
 }
 
@@ -142,7 +142,7 @@
 }
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{
-    [self.view endEditing:YES];
+    //[self.view endEditing:YES];
 }
 
 -(notifyWindow*)notiWindow{

@@ -16,6 +16,8 @@ static const CGFloat separatorEachEle   = 10.0f;
 
 @interface TLAlertView ()
 
+@property (nonatomic, strong) UIWindow *alertWindow;
+
 @property (nonatomic, strong) NSString  *title;
 @property (nonatomic, strong) NSString  *message;
 @property (nonatomic, strong) NSString  *buttonTitle;
@@ -211,9 +213,14 @@ static const CGFloat separatorEachEle   = 10.0f;
 
 -(void)show {
     // Assume the view is offscreen. Use a Snap behaviour to position it in the center of the screen.
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    //UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    _alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _alertWindow.windowLevel = UIWindowLevelAlert;
+    _alertWindow.backgroundColor = [UIColor clearColor];
+    [_alertWindow makeKeyAndVisible];
     
-    [keyWindow addSubview:self];
+    
+    [_alertWindow addSubview:self];
     
     // Animate in the background blind
     [UIView animateWithDuration:animationDuration animations:^{
@@ -221,7 +228,7 @@ static const CGFloat separatorEachEle   = 10.0f;
     }];
     
     // Use UIKit Dynamics to make the alertView appear.
-    UISnapBehavior *snapBehaviour = [[UISnapBehavior alloc] initWithItem:self.alertView snapToPoint:keyWindow.center];
+    UISnapBehavior *snapBehaviour = [[UISnapBehavior alloc] initWithItem:self.alertView snapToPoint:_alertWindow.center];
     snapBehaviour.damping = 0.7f;
     [self.animator addBehavior:snapBehaviour];
     
@@ -250,6 +257,7 @@ static const CGFloat separatorEachEle   = 10.0f;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
         // Very important!
+        self.alertWindow = nil;
         self.retainedSelf = nil;
     }];
     
