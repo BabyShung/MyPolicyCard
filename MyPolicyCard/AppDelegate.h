@@ -15,7 +15,6 @@
 @property (strong, nonatomic) slidingWindow *window;
 @property (strong, nonatomic) slidingWindow *foregroundWindow;
 
--(void)initLoginVC;
 -(void)initLoginWindow;
 
 @end

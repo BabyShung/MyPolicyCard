@@ -11,15 +11,9 @@
 @interface GeneralControl : NSObject
 
 +(void)showError:(NSError *)error withTextField:(UITextField *)textfield;
-
 +(void)showErrorMsg:(NSString *)msg withTextField:(UITextField *)textfield;
 
-+(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name;
-
-+(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name withDuration:(CGFloat) duration;
-
-+(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate withDelay:(CGFloat)delay;
-
++(void)transitionToLoggedin_Animation:(BOOL)animate;
 +(void)transitionForLogout;
 
 @end

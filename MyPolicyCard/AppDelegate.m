@@ -39,8 +39,8 @@
     NSDictionary *currentUser = [UserDefaultHelper getCurrentUser];
     if(currentUser){
         //from dictionary to User instance + init
-        [User fromDictionaryToUser:currentUser];
-        [GeneralControl transitionToShowPlan:self.myStoryboard withAnimation:NO withDelay:0];
+        [User initUserInstanceFromDictionary:currentUser];
+        [GeneralControl transitionToLoggedin_Animation:NO];
         
         NSLog(@"Second Login: %@",[User sharedInstance]);
     
@@ -53,10 +53,6 @@
 -(void)initLoginWindow{
     self.window = [[slidingWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.windowLevel = UIWindowLevelNormal;
-    [self initLoginVC];
-}
-
--(void)initLoginVC{
     self.window.rootViewController = [self.myStoryboard instantiateViewControllerWithIdentifier:@"Login"];
     [self.window makeKeyAndVisible];
 }

@@ -48,7 +48,7 @@ typedef void (^edibleBlockForCarriers)(NSError *err, BOOL success,NSArray *carri
 +(NSDictionary*)toDictionary;
 
 //dict to user
-+(User *)fromDictionaryToUser:(NSDictionary *)dict;
++(User *)initUserInstanceFromDictionary:(NSDictionary *)dict;
 
 //send feedback
 +(void)sendFeedBack:(NSString*)content andCompletion:(void (^)(NSError *err, BOOL success))block;

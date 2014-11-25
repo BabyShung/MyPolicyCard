@@ -143,18 +143,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view alpha="0.96999999999999997" contentMode="scaleToFill" id="pcM-Pp-h46" userLabel="blackBG">
-                                <rect key="frame" x="80" y="15" width="160" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1463500707" green="0.163991686" blue="0.16764987240000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fkA-qu-4Fx" customClass="AnimateLabel">
-                                <rect key="frame" x="0.0" y="74" width="320" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="27"/>
-                                <color key="textColor" red="0.18823531269999999" green="0.70588237050000002" blue="0.9215686917" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view alpha="0.96999999999999997" contentMode="scaleToFill" id="vys-lp-mU8" userLabel="textboxContainer">
                                 <rect key="frame" x="29" y="192" width="260" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -212,10 +200,8 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="animatedLabel" destination="fkA-qu-4Fx" id="Xg0-Oi-Xnb"/>
                         <outlet property="containerView" destination="vys-lp-mU8" id="xZ6-9g-bPv"/>
                         <outlet property="loginBtn" destination="pXz-AE-l85" id="O3t-ms-M4i"/>
-                        <outlet property="logoView" destination="pcM-Pp-h46" id="3iN-tk-HzR"/>
                         <outlet property="pwdTextField" destination="hSv-kM-RED" id="obl-iH-le8"/>
                         <outlet property="userTextField" destination="iZk-qT-TrL" id="gnq-DO-d1A"/>
                     </connections>

@@ -44,10 +44,6 @@
     
     [_loginBtn primaryStyle];
     
-    //animate label
-    [_animatedLabel animateWithWords:@[@"PolicyApp",@"Like it?"] forDuration:3.0f];
-    
-    _logoView.layer.cornerRadius = 80.0f;
     _containerView.layer.cornerRadius = 8;
     _userTextField.delegate = self;
     _pwdTextField.delegate = self;
@@ -98,7 +94,7 @@
                 NSLog(@"%@",[User sharedInstance]);
                 
                 //transition my special window
-                [GeneralControl transitionToShowPlan:self.storyboard withAnimation:YES withDelay:0.5];
+                [GeneralControl transitionToLoggedin_Animation:YES];
                
                 
             }else{
@@ -123,7 +119,7 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    _userViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 190);
+    //_userViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 190);
 }
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{

@@ -224,7 +224,7 @@ static NSArray *colors;
 - (IBAction)back:(id)sender {
     
     [User logOut];
-    [GeneralControl transitionToVC:self withToVCStoryboardId:@"Login" withDuration:0.4];
+    //[GeneralControl transitionToVC:self withToVCStoryboardId:@"Login" withDuration:0.4];
     
 }
 

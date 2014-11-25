@@ -196,7 +196,7 @@ static edibleBlockForCarriers CompletionBlockForCarriers;
     return dict;
 }
 
-+(User *)fromDictionaryToUser:(NSDictionary *)dict{
++(User *)initUserInstanceFromDictionary:(NSDictionary *)dict{
     
     NSString *username = [dict objectForKey:@"username"];
     NSString *profileName = [dict objectForKey:@"profileName"];

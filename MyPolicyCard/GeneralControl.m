@@ -41,86 +41,61 @@
         }
     }];
     [alert show];
-
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg delegate:nil cancelButtonTitle:AMLocalizedString(@"Cancel", nil) otherButtonTitles: nil];
-//    [alert showWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-//        if (buttonIndex == [alertView cancelButtonIndex]) {
-//            if(textfield){
-//                textfield.text = @"";
-//                [textfield becomeFirstResponder];
-//            }
-//        }
-//    }];
 }
 
-+(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate withDelay:(CGFloat)delay{
++(void)transitionToLoggedin_Animation:(BOOL)animate{
     
     NSLog(@"transitionToShowPlan ******");
     
     AppDelegate *appd =[[UIApplication sharedApplication] delegate];
     
     appd.foregroundWindow = [[slidingWindow alloc] initWithFrameAndGestures:[UIScreen mainScreen].bounds];
-    appd.foregroundWindow.rootViewController = [sb instantiateViewControllerWithIdentifier:@"CardsNav"];
+    appd.foregroundWindow.rootViewController = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"CardsNav"];
     appd.foregroundWindow.windowLevel = UIWindowLevelStatusBar;
-    [appd.foregroundWindow makeKeyAndVisible];
+    
     
     if(animate){
-        [appd.foregroundWindow SlideInFromButtom];
-    }else{
         
+        UIViewController *toVC = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"Profile"];
+        
+//        [UIView transitionFromView:appd.window.rootViewController.view
+//                            toView:toVC.view
+//                          duration:2.65f
+//                           options:UIViewAnimationOptionTransitionCrossDissolve
+//                        completion:^(BOOL finished){
+//                            
+//                            
+//                        }];
+        
+        [appd.foregroundWindow makeKeyAndVisible];
+        [appd.foregroundWindow SlideInFromButtom];
+        
+        appd.window.rootViewController = toVC;
+    }else{
+        [appd.foregroundWindow makeKeyAndVisible];
+        appd.window.rootViewController = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"Profile"];
     }
-    
-    appd.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"Profile"];
-    
-    
-//    //release the login window
-//    [UIView animateWithDuration:.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-//        appd.window.alpha = 0;
-//    } completion:^(BOOL success){
-//        
-//        appd.window.rootViewController = nil;
-//        
-//    }];
 }
 
 +(void)transitionForLogout{
     AppDelegate *appd =[[UIApplication sharedApplication] delegate];
     
-    appd.window.alpha = 1;
+    UIViewController *svc = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"Login"];
     
-    [appd initLoginVC];
-    
-    //[appd.window slideOutFromTop];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        [appd.foregroundWindow slideOutFromTop];
-        
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            appd.foregroundWindow = nil;
-//            appd.window = nil;
-//        });
-    });
-}
-
-+(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name{
-    [self transitionToVC:vc withToVCStoryboardId:name withDuration:0.8];
-}
-
-+(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name withDuration:(CGFloat) duration{
-    
-    AppDelegate *appd = [[UIApplication sharedApplication] delegate];
-    UIWindow *windooo = appd.foregroundWindow;
-    UIViewController *fvc = [vc.storyboard instantiateViewControllerWithIdentifier:name];
-    [UIView transitionWithView:windooo
-                      duration:duration
-                       options:UIViewAnimationOptionCurveEaseOut
-                    animations:^{
-                        vc.view.alpha = 0;
-                    }
-                    completion:^(BOOL success){
-                        windooo.rootViewController = fvc;
+    [UIView transitionFromView:appd.window.rootViewController.view
+                        toView:svc.view
+                      duration:0.65f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    completion:^(BOOL finished){
+                        appd.window.rootViewController = svc;
+                        [appd.foregroundWindow slideOutFromTop];
                     }];
+    
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        [appd.foregroundWindow slideOutFromTop];
+//    });
 }
 
 @end
