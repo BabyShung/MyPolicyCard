@@ -155,8 +155,8 @@
                                 <color key="textColor" red="0.18823531269999999" green="0.70588237050000002" blue="0.9215686917" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.96999999999999997" contentMode="scaleToFill" id="vys-lp-mU8" userLabel="emailview">
-                                <rect key="frame" x="29" y="192" width="260" height="50"/>
+                            <view alpha="0.96999999999999997" contentMode="scaleToFill" id="vys-lp-mU8" userLabel="textboxContainer">
+                                <rect key="frame" x="29" y="192" width="260" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" id="iZk-qT-TrL" userLabel="userTF">
@@ -170,22 +170,20 @@
                                         <rect key="frame" x="4" y="0.0" width="61" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.1463500707" green="0.163991686" blue="0.16764987240000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view alpha="0.96999999999999997" contentMode="scaleToFill" id="v4N-7b-TMe" userLabel="pwdview">
-                                <rect key="frame" x="30" y="250" width="260" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
+                                    <view contentMode="scaleToFill" id="wj7-Hu-C8g" userLabel="separateLine">
+                                        <rect key="frame" x="10" y="51" width="240" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" id="hSv-kM-RED" userLabel="pwdTF">
-                                        <rect key="frame" x="70" y="0.0" width="180" height="50"/>
+                                        <rect key="frame" x="71" y="52" width="180" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.png" id="ETH-xj-zTK">
-                                        <rect key="frame" x="4" y="0.0" width="61" height="50"/>
+                                        <rect key="frame" x="4" y="52" width="61" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -215,12 +213,11 @@
                     </view>
                     <connections>
                         <outlet property="animatedLabel" destination="fkA-qu-4Fx" id="Xg0-Oi-Xnb"/>
+                        <outlet property="containerView" destination="vys-lp-mU8" id="xZ6-9g-bPv"/>
                         <outlet property="loginBtn" destination="pXz-AE-l85" id="O3t-ms-M4i"/>
                         <outlet property="logoView" destination="pcM-Pp-h46" id="3iN-tk-HzR"/>
                         <outlet property="pwdTextField" destination="hSv-kM-RED" id="obl-iH-le8"/>
-                        <outlet property="pwdView" destination="v4N-7b-TMe" id="qPI-m3-ZVO"/>
                         <outlet property="userTextField" destination="iZk-qT-TrL" id="gnq-DO-d1A"/>
-                        <outlet property="userView" destination="vys-lp-mU8" id="tNE-wW-F0C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMm-Qe-LER" sceneMemberID="firstResponder"/>

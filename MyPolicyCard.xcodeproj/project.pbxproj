@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B804EC951A242BCC00E07D07 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = B804EC941A242BCC00E07D07 /* NSString+FontAwesome.m */; };
 		B81AA286199016A8003028EB /* LocalizationSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA285199016A8003028EB /* LocalizationSystem.m */; };
 		B81AA294199019AF003028EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B81AA296199019AF003028EB /* Localizable.strings */; };
 		B81AA2A1199026E6003028EB /* UserDefaultHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA29E199026E6003028EB /* UserDefaultHelper.m */; };
@@ -22,7 +23,6 @@
 		B81AA2C619912FD4003028EB /* bgProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = B81AA2C419912FD4003028EB /* bgProfile.png */; };
 		B81AA2C719912FD4003028EB /* bgLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = B81AA2C519912FD4003028EB /* bgLogin.png */; };
 		B83578051A22756B00661030 /* TLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83578041A22756B00661030 /* TLAlertView.m */; };
-		B83578401A22CE5400661030 /* AlertViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B835783F1A22CE5400661030 /* AlertViewWindow.m */; };
 		B86616AE19A01CE9009AFAEB /* addImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B86616A919A01CE8009AFAEB /* addImage.png */; };
 		B86616AF19A01CE9009AFAEB /* IQFeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */; };
 		B86616B319A0281B009AFAEB /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B86616B219A0281B009AFAEB /* UIView+Toast.m */; };
@@ -48,11 +48,10 @@
 		B89CC80A199D9358004FEB7A /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC809199D9358004FEB7A /* SecondViewController.m */; };
 		B89CC810199D937F004FEB7A /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC80D199D937F004FEB7A /* ProfileCell.m */; };
 		B89CC811199D937F004FEB7A /* PolicyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC80F199D937F004FEB7A /* PolicyCell.m */; };
-		B89CC816199D9392004FEB7A /* dragViewBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC815199D9392004FEB7A /* dragViewBehavior.m */; };
 		B89CC819199D95E2004FEB7A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC818199D95E2004FEB7A /* MainViewController.m */; };
 		B89CC81F199D9674004FEB7A /* smallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC81C199D9674004FEB7A /* smallLayout.m */; };
 		B89CC820199D9674004FEB7A /* largeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC81E199D9674004FEB7A /* largeLayout.m */; };
-		B89CC827199DBFC2004FEB7A /* HaoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC826199DBFC2004FEB7A /* HaoWindow.m */; };
+		B89CC827199DBFC2004FEB7A /* slidingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC826199DBFC2004FEB7A /* slidingWindow.m */; };
 		B89CC82F199E93D3004FEB7A /* notifyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B89CC82E199E93D3004FEB7A /* notifyWindow.m */; };
 		B8A420AB198FD1D500D77DFB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A420AA198FD1D500D77DFB /* Parse.framework */; };
 		B8A420AD198FD21300D77DFB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A420AC198FD21300D77DFB /* AudioToolbox.framework */; };
@@ -89,7 +88,6 @@
 		B8B0F52D19529BEE00BE6929 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F52719529BEE00BE6929 /* user.png */; };
 		B8B0F52E19529BEE00BE6929 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B0F52819529BEE00BE6929 /* user@2x.png */; };
 		B8B0F53619529EE300BE6929 /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F53519529EE300BE6929 /* UIButton+Bootstrap.m */; };
-		B8B0F5391952A4A500BE6929 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F5381952A4A500BE6929 /* NSString+FontAwesome.m */; };
 		B8B0F53C1953A23100BE6929 /* Carrier.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F53B1953A23100BE6929 /* Carrier.m */; };
 		B8B0F5441953A97A00BE6929 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F5411953A97A00BE6929 /* FBShimmeringView.m */; };
 		B8B0F5451953A97A00BE6929 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0F5431953A97A00BE6929 /* FBShimmeringLayer.m */; };
@@ -111,6 +109,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B804EC931A242BCC00E07D07 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		B804EC941A242BCC00E07D07 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		B81AA284199016A8003028EB /* LocalizationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationSystem.h; sourceTree = "<group>"; };
 		B81AA285199016A8003028EB /* LocalizationSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationSystem.m; sourceTree = "<group>"; };
 		B81AA29719901B6E003028EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -143,8 +143,6 @@
 		B81AA2C519912FD4003028EB /* bgLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgLogin.png; sourceTree = "<group>"; };
 		B83578031A22756B00661030 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAlertView.h; sourceTree = "<group>"; };
 		B83578041A22756B00661030 /* TLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAlertView.m; sourceTree = "<group>"; };
-		B835783E1A22CE5400661030 /* AlertViewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewWindow.h; sourceTree = "<group>"; };
-		B835783F1A22CE5400661030 /* AlertViewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewWindow.m; sourceTree = "<group>"; };
 		B86616A919A01CE8009AFAEB /* addImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addImage.png; path = ../addImage.png; sourceTree = "<group>"; };
 		B86616AA19A01CE9009AFAEB /* IQFeedbackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IQFeedbackView.h; path = ../IQFeedbackView.h; sourceTree = "<group>"; };
 		B86616AB19A01CE9009AFAEB /* IQFeedbackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IQFeedbackView.m; path = ../IQFeedbackView.m; sourceTree = "<group>"; };
@@ -180,16 +178,14 @@
 		B89CC80E199D937F004FEB7A /* PolicyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyCell.h; sourceTree = "<group>"; };
 		B89CC80F199D937F004FEB7A /* PolicyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyCell.m; sourceTree = "<group>"; };
 		B89CC813199D9392004FEB7A /* draggableViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = draggableViewState.h; sourceTree = "<group>"; };
-		B89CC814199D9392004FEB7A /* dragViewBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dragViewBehavior.h; sourceTree = "<group>"; };
-		B89CC815199D9392004FEB7A /* dragViewBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dragViewBehavior.m; sourceTree = "<group>"; };
 		B89CC817199D95E2004FEB7A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		B89CC818199D95E2004FEB7A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		B89CC81B199D9674004FEB7A /* smallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smallLayout.h; sourceTree = "<group>"; };
 		B89CC81C199D9674004FEB7A /* smallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = smallLayout.m; sourceTree = "<group>"; };
 		B89CC81D199D9674004FEB7A /* largeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = largeLayout.h; sourceTree = "<group>"; };
 		B89CC81E199D9674004FEB7A /* largeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = largeLayout.m; sourceTree = "<group>"; };
-		B89CC825199DBFC2004FEB7A /* HaoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HaoWindow.h; sourceTree = "<group>"; };
-		B89CC826199DBFC2004FEB7A /* HaoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HaoWindow.m; sourceTree = "<group>"; };
+		B89CC825199DBFC2004FEB7A /* slidingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = slidingWindow.h; sourceTree = "<group>"; };
+		B89CC826199DBFC2004FEB7A /* slidingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = slidingWindow.m; sourceTree = "<group>"; };
 		B89CC82D199E93D3004FEB7A /* notifyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notifyWindow.h; sourceTree = "<group>"; };
 		B89CC82E199E93D3004FEB7A /* notifyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = notifyWindow.m; sourceTree = "<group>"; };
 		B8A420AA198FD1D500D77DFB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -239,8 +235,6 @@
 		B8B0F52819529BEE00BE6929 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		B8B0F53419529EE300BE6929 /* UIButton+Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Bootstrap.h"; sourceTree = "<group>"; };
 		B8B0F53519529EE300BE6929 /* UIButton+Bootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Bootstrap.m"; sourceTree = "<group>"; };
-		B8B0F5371952A4A500BE6929 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
-		B8B0F5381952A4A500BE6929 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		B8B0F53A1953A23100BE6929 /* Carrier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carrier.h; sourceTree = "<group>"; };
 		B8B0F53B1953A23100BE6929 /* Carrier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Carrier.m; sourceTree = "<group>"; };
 		B8B0F53F1953A97A00BE6929 /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
@@ -292,6 +286,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B804EC961A242C5700E07D07 /* no use */ = {
+			isa = PBXGroup;
+			children = (
+				B89CC82D199E93D3004FEB7A /* notifyWindow.h */,
+				B89CC82E199E93D3004FEB7A /* notifyWindow.m */,
+			);
+			name = "no use";
+			sourceTree = "<group>";
+		};
 		B81AA29B19901B7F003028EB /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,10 +332,10 @@
 		B86616A219A01265009AFAEB /* Windows */ = {
 			isa = PBXGroup;
 			children = (
-				B89CC82D199E93D3004FEB7A /* notifyWindow.h */,
-				B89CC82E199E93D3004FEB7A /* notifyWindow.m */,
-				B89CC825199DBFC2004FEB7A /* HaoWindow.h */,
-				B89CC826199DBFC2004FEB7A /* HaoWindow.m */,
+				B83578031A22756B00661030 /* TLAlertView.h */,
+				B83578041A22756B00661030 /* TLAlertView.m */,
+				B89CC825199DBFC2004FEB7A /* slidingWindow.h */,
+				B89CC826199DBFC2004FEB7A /* slidingWindow.m */,
 			);
 			name = Windows;
 			sourceTree = "<group>";
@@ -352,8 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				B89CC813199D9392004FEB7A /* draggableViewState.h */,
-				B89CC814199D9392004FEB7A /* dragViewBehavior.h */,
-				B89CC815199D9392004FEB7A /* dragViewBehavior.m */,
+				B8AA0F511A20383E00C5992E /* MovingBehavior.h */,
+				B8AA0F521A20383E00C5992E /* MovingBehavior.m */,
 			);
 			name = UIDynamics;
 			sourceTree = "<group>";
@@ -402,8 +405,8 @@
 				B86616B519A04A51009AFAEB /* FeRippleButton.m */,
 				B8B0F53419529EE300BE6929 /* UIButton+Bootstrap.h */,
 				B8B0F53519529EE300BE6929 /* UIButton+Bootstrap.m */,
-				B8B0F5371952A4A500BE6929 /* NSString+FontAwesome.h */,
-				B8B0F5381952A4A500BE6929 /* NSString+FontAwesome.m */,
+				B804EC931A242BCC00E07D07 /* NSString+FontAwesome.h */,
+				B804EC941A242BCC00E07D07 /* NSString+FontAwesome.m */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -411,12 +414,9 @@
 		B8B0F4C41952902500BE6929 = {
 			isa = PBXGroup;
 			children = (
+				B804EC961A242C5700E07D07 /* no use */,
 				B8B0F4DF1952902500BE6929 /* AppDelegate.h */,
 				B8B0F4E01952902500BE6929 /* AppDelegate.m */,
-				B835783E1A22CE5400661030 /* AlertViewWindow.h */,
-				B835783F1A22CE5400661030 /* AlertViewWindow.m */,
-				B83578031A22756B00661030 /* TLAlertView.h */,
-				B83578041A22756B00661030 /* TLAlertView.m */,
 				B8B0F4E21952902500BE6929 /* Main.storyboard */,
 				B81AA29B19901B7F003028EB /* Localization */,
 				B86616A219A01265009AFAEB /* Windows */,
@@ -460,8 +460,6 @@
 		B8B0F4D61952902500BE6929 /* MyPolicyCard */ = {
 			isa = PBXGroup;
 			children = (
-				B8AA0F511A20383E00C5992E /* MovingBehavior.h */,
-				B8AA0F521A20383E00C5992E /* MovingBehavior.m */,
 				B8B0F53319529C5900BE6929 /* LoginPage */,
 				B8B0F5051952904B00BE6929 /* MainPage */,
 				B8B0F53D1953A23800BE6929 /* Objects */,
@@ -750,17 +748,16 @@
 			files = (
 				B89CC80A199D9358004FEB7A /* SecondViewController.m in Sources */,
 				B8B0F53C1953A23100BE6929 /* Carrier.m in Sources */,
-				B8B0F5391952A4A500BE6929 /* NSString+FontAwesome.m in Sources */,
 				B8C8F281195D31BF009F8F6E /* UILayers.m in Sources */,
 				B89CC82F199E93D3004FEB7A /* notifyWindow.m in Sources */,
-				B89CC816199D9392004FEB7A /* dragViewBehavior.m in Sources */,
 				B81AA2BB19907823003028EB /* LoadingAnimation.m in Sources */,
 				B8B0F5111952905200BE6929 /* CardFlowLayout.m in Sources */,
 				B86616B319A0281B009AFAEB /* UIView+Toast.m in Sources */,
 				B89CC811199D937F004FEB7A /* PolicyCell.m in Sources */,
 				B81AA2B519906331003028EB /* UIColor+flat.m in Sources */,
 				B83578051A22756B00661030 /* TLAlertView.m in Sources */,
-				B89CC827199DBFC2004FEB7A /* HaoWindow.m in Sources */,
+				B804EC951A242BCC00E07D07 /* NSString+FontAwesome.m in Sources */,
+				B89CC827199DBFC2004FEB7A /* slidingWindow.m in Sources */,
 				B8D759C119A1B48D008050A6 /* Company.m in Sources */,
 				B81AA2B819906403003028EB /* FeBasicAnimationBlock.m in Sources */,
 				B8A420C8198FD66F00D77DFB /* FormValidator.m in Sources */,
@@ -777,7 +774,6 @@
 				B878EEAC1953E54A00C43583 /* AnimateLabel.m in Sources */,
 				B8B0F5441953A97A00BE6929 /* FBShimmeringView.m in Sources */,
 				B86616AF19A01CE9009AFAEB /* IQFeedbackView.m in Sources */,
-				B83578401A22CE5400661030 /* AlertViewWindow.m in Sources */,
 				B8AA0F531A20383E00C5992E /* MovingBehavior.m in Sources */,
 				B8B0F52419529BE800BE6929 /* LoginViewController.m in Sources */,
 				B878EEA51953D52000C43583 /* RQShineLabel.m in Sources */,

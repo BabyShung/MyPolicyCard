@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Hao Zheng. All rights reserved.
 //
 
-#import "HaoWindow.h"
+#import "slidingWindow.h"
 #import "draggableViewState.h"
-#import "dragViewBehavior.h"
+#import "MovingBehavior.h"
 
 #define kRecuriveAnimationEnabled NO
 #define kWindowHeaderHeight 80
 #define WindowScaleFactor 0.04
 
-@interface HaoWindow()
+@interface slidingWindow()
 {
     CGFloat ScreenWidth;
     CGFloat ScreenHeight;
@@ -22,12 +22,12 @@
 
 @property (strong, nonatomic) UIDynamicAnimator *animator;
 @property (nonatomic) dragViewState state;
-@property (nonatomic, strong) dragViewBehavior *dragBehavior;
+@property (nonatomic, strong) MovingBehavior *dragBehavior;
 @property (nonatomic,strong) UITapGestureRecognizer *tapRecognizer;
 
 @end
 
-@implementation HaoWindow
+@implementation slidingWindow
 
 - (id)initWithFrame:(CGRect)frame{
     
@@ -109,14 +109,11 @@
 }
 
 -(void)SlideInFromButtom{
-    
-    [self makeKeyAndVisible];
     self.center = CGPointMake(ScreenWidth/2, ScreenHeight * 1.5);
     [self animateDragViewWithInitialVelocity:CGPointMake(0, -300)];
 }
 
 -(void)slideOutFromTop{
-    
     [self animateWindow_Velocity:CGPointMake(0, 200) andFinalPosition:CGPointMake(ScreenWidth/2, ScreenHeight * 1.5)];
 }
 
@@ -155,7 +152,7 @@
 -(void)animateWindow_Velocity:(CGPoint)initialVelocity andFinalPosition:(CGPoint)pos{
     if (!self.dragBehavior) {
         NSLog(@"init once for dragView behavior");
-        self.dragBehavior = [[dragViewBehavior alloc] initWithItem:self];//which object you want to operate
+        self.dragBehavior = [[MovingBehavior alloc] initWithItem:self];//which object you want to operate
     }
     self.dragBehavior.targetPoint = pos;
     self.dragBehavior.velocity = initialVelocity;
@@ -208,7 +205,7 @@
         window.transform = CGAffineTransformMakeScale(scale, scale);
         window.alpha = percentage;
         if (kRecuriveAnimationEnabled && [window respondsToSelector:@selector(updateTransitionAnimationWithPercentage:)]) {
-            [(HaoWindow *)window updateTransitionAnimationWithPercentage:percentage];
+            [(slidingWindow *)window updateTransitionAnimationWithPercentage:percentage];
         }
     }
 }
@@ -220,7 +217,7 @@
         window.transform = CGAffineTransformMakeScale(returnScale, returnScale);
         window.alpha = 0;
         if (kRecuriveAnimationEnabled && [window respondsToSelector:@selector(cancelTransition)]) {
-            [(HaoWindow *)window cancelTransition];
+            [(slidingWindow *)window cancelTransition];
         }
     }
     UIWindow *nextWindow = self.nextWindow;
@@ -235,7 +232,7 @@
         window.transform = CGAffineTransformIdentity;
         window.alpha = 1;
         if (kRecuriveAnimationEnabled && [window respondsToSelector:@selector(completeTransition)]) {
-            [(HaoWindow *)window completeTransition];
+            [(slidingWindow *)window completeTransition];
         }
     }
     [self completeNextWindowTranslation];

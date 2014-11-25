@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HaoWindow : UIWindow
+@interface slidingWindow : UIWindow
 @property (nonatomic, readonly) UIWindow *superWindow;
 @property (nonatomic, readonly) UIWindow *nextWindow;
 

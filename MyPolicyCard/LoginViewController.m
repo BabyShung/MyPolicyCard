@@ -27,7 +27,6 @@
 
 @property (nonatomic, strong) MovingBehavior *loginBtnBehavior;
 @property (nonatomic, strong) MovingBehavior *userViewBehavior;
-@property (nonatomic, strong) MovingBehavior *pwdViewBehavior;
 
 @end
 
@@ -40,8 +39,7 @@
 
 -(void)loadControls{
     
-    _userView.center = CGPointMake(DeviceScreenWidth/2, -100);
-    _pwdView.center = CGPointMake(DeviceScreenWidth/2, -100 + USER_PWD_VIEW_MARGIN);
+    _containerView.center = CGPointMake(DeviceScreenWidth/2, -100);
     _loginBtn.center = CGPointMake(DeviceScreenWidth/2, DeviceScreenHeight+100);
     
     [_loginBtn primaryStyle];
@@ -50,8 +48,7 @@
     [_animatedLabel animateWithWords:@[@"PolicyApp",@"Like it?"] forDuration:3.0f];
     
     _logoView.layer.cornerRadius = 80.0f;
-    _userView.layer.cornerRadius = 8;
-    _pwdView.layer.cornerRadius = 8;
+    _containerView.layer.cornerRadius = 8;
     _userTextField.delegate = self;
     _pwdTextField.delegate = self;
     [_userTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -66,21 +63,19 @@
     //uidynamics
     _mainAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
     _loginBtnBehavior = [[MovingBehavior alloc] initWithItem:_loginBtn];
-    _userViewBehavior = [[MovingBehavior alloc] initWithItem:_userView];
-    _pwdViewBehavior = [[MovingBehavior alloc] initWithItem:_pwdView];
+    _userViewBehavior = [[MovingBehavior alloc] initWithItem:_containerView];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
 
-    
-    _userViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 200);
-    _pwdViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 200 + USER_PWD_VIEW_MARGIN + CGRectGetHeight(_pwdView.frame));
+    //note, not good code, should happen only once
+ 
+    _userViewBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, 250);
     _loginBtnBehavior.targetPoint = CGPointMake(DeviceScreenWidth/2, DeviceScreenHeight - 200);
     
     //once added, it will effect
     [_mainAnimator addBehavior:_loginBtnBehavior];
     [_mainAnimator addBehavior:_userViewBehavior];
-    [_mainAnimator addBehavior:_pwdViewBehavior];
 }
 
 - (IBAction)login:(UIButton *)sender {
@@ -103,9 +98,8 @@
                 NSLog(@"%@",[User sharedInstance]);
                 
                 //transition my special window
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [GeneralControl transitionToShowPlan:self.storyboard withAnimation:YES];
-                });
+                [GeneralControl transitionToShowPlan:self.storyboard withAnimation:YES withDelay:0.5];
+               
                 
             }else{
                 //not success

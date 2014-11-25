@@ -23,8 +23,8 @@
                   clientKey:@"lYw5JetgqAcRM12QOURKjlguO0szzE52nBLP1Gdb"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-        //cache keyboard
-    [UIResponder cacheKeyboard];
+    //cache keyboard
+    //[UIResponder cacheKeyboard];
     
     self.myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -40,8 +40,7 @@
     if(currentUser){
         //from dictionary to User instance + init
         [User fromDictionaryToUser:currentUser];
-        
-        [GeneralControl transitionToShowPlan:self.myStoryboard withAnimation:NO];
+        [GeneralControl transitionToShowPlan:self.myStoryboard withAnimation:NO withDelay:0];
         
         NSLog(@"Second Login: %@",[User sharedInstance]);
     
@@ -52,7 +51,7 @@
 }
 
 -(void)initLoginWindow{
-    self.window = [[HaoWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[slidingWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.windowLevel = UIWindowLevelNormal;
     [self initLoginVC];
 }

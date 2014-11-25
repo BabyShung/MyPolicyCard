@@ -7,8 +7,8 @@
 //
 
 #import "GeneralControl.h"
-#import "UIAlertView+Blocks.h"
-#import "LocalizationSystem.h"
+
+
 #import "AppDelegate.h"
 
 #import "TLAlertView.h"
@@ -53,33 +53,26 @@
 //    }];
 }
 
-+(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate{
++(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate withDelay:(CGFloat)delay{
     
     NSLog(@"transitionToShowPlan ******");
     
     AppDelegate *appd =[[UIApplication sharedApplication] delegate];
     
-    appd.foregroundWindow = [[HaoWindow alloc] initWithFrameAndGestures:[UIScreen mainScreen].bounds];
+    appd.foregroundWindow = [[slidingWindow alloc] initWithFrameAndGestures:[UIScreen mainScreen].bounds];
     appd.foregroundWindow.rootViewController = [sb instantiateViewControllerWithIdentifier:@"CardsNav"];
     appd.foregroundWindow.windowLevel = UIWindowLevelStatusBar;
+    [appd.foregroundWindow makeKeyAndVisible];
     
     if(animate){
         [appd.foregroundWindow SlideInFromButtom];
     }else{
-        [appd.foregroundWindow makeKeyAndVisible];
+        
     }
     
     appd.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"Profile"];
     
     
-//    appd.profileWindow = [[HaoWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    appd.profileWindow.rootViewController = [sb instantiateViewControllerWithIdentifier:@"Profile"];
-//    appd.profileWindow.windowLevel = UIWindowLevelNormal + 50;
-//    [appd.profileWindow makeKeyAndVisible];
-//    
-//    //first making it invisible
-//    appd.profileWindow.alpha = 0;
-//
 //    //release the login window
 //    [UIView animateWithDuration:.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
 //        appd.window.alpha = 0;
@@ -97,16 +90,16 @@
     
     [appd initLoginVC];
     
-    [appd.profileWindow slideOutFromTop];
+    //[appd.window slideOutFromTop];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [appd.foregroundWindow slideOutFromTop];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            appd.foregroundWindow = nil;
-            appd.profileWindow = nil;
-        });
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            appd.foregroundWindow = nil;
+//            appd.window = nil;
+//        });
     });
 }
 

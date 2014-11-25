@@ -287,7 +287,7 @@
 -(void)showInViewController:(UIViewController*)controller completionHandler:(IQFeedbackCompletion)completionHandler
 {
     //Hao added
-    _appd.foregroundWindow.windowLevel = _appd.profileWindow.windowLevel + 0.5;
+    _appd.foregroundWindow.windowLevel = _appd.window.windowLevel + 0.5;
     
     
 	_currentController = controller;

@@ -18,7 +18,7 @@
 
 +(void)transitionToVC:(UIViewController *)vc withToVCStoryboardId:(NSString*)name withDuration:(CGFloat) duration;
 
-+(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate;
++(void)transitionToShowPlan:(UIStoryboard*)sb withAnimation:(BOOL)animate withDelay:(CGFloat)delay;
 
 +(void)transitionForLogout;
 
