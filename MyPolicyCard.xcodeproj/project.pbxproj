@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B804EC951A242BCC00E07D07 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = B804EC941A242BCC00E07D07 /* NSString+FontAwesome.m */; };
+		B804EC9F1A257D8C00E07D07 /* KBRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B804EC9E1A257D8C00E07D07 /* KBRoundedButton.m */; };
+		B804ECA21A257DE700E07D07 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = B804ECA11A257DE700E07D07 /* UIImage+Color.m */; };
 		B81AA286199016A8003028EB /* LocalizationSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA285199016A8003028EB /* LocalizationSystem.m */; };
 		B81AA294199019AF003028EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B81AA296199019AF003028EB /* Localizable.strings */; };
 		B81AA2A1199026E6003028EB /* UserDefaultHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AA29E199026E6003028EB /* UserDefaultHelper.m */; };
@@ -111,6 +113,10 @@
 /* Begin PBXFileReference section */
 		B804EC931A242BCC00E07D07 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		B804EC941A242BCC00E07D07 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		B804EC9D1A257D8C00E07D07 /* KBRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBRoundedButton.h; sourceTree = "<group>"; };
+		B804EC9E1A257D8C00E07D07 /* KBRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBRoundedButton.m; sourceTree = "<group>"; };
+		B804ECA01A257DE700E07D07 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		B804ECA11A257DE700E07D07 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		B81AA284199016A8003028EB /* LocalizationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationSystem.h; sourceTree = "<group>"; };
 		B81AA285199016A8003028EB /* LocalizationSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationSystem.m; sourceTree = "<group>"; };
 		B81AA29719901B6E003028EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -418,6 +424,10 @@
 				B8B0F4DF1952902500BE6929 /* AppDelegate.h */,
 				B8B0F4E01952902500BE6929 /* AppDelegate.m */,
 				B8B0F4E21952902500BE6929 /* Main.storyboard */,
+				B804EC9D1A257D8C00E07D07 /* KBRoundedButton.h */,
+				B804EC9E1A257D8C00E07D07 /* KBRoundedButton.m */,
+				B804ECA01A257DE700E07D07 /* UIImage+Color.h */,
+				B804ECA11A257DE700E07D07 /* UIImage+Color.m */,
 				B81AA29B19901B7F003028EB /* Localization */,
 				B86616A219A01265009AFAEB /* Windows */,
 				B8B0F4D61952902500BE6929 /* MyPolicyCard */,
@@ -748,6 +758,7 @@
 			files = (
 				B89CC80A199D9358004FEB7A /* SecondViewController.m in Sources */,
 				B8B0F53C1953A23100BE6929 /* Carrier.m in Sources */,
+				B804EC9F1A257D8C00E07D07 /* KBRoundedButton.m in Sources */,
 				B8C8F281195D31BF009F8F6E /* UILayers.m in Sources */,
 				B89CC82F199E93D3004FEB7A /* notifyWindow.m in Sources */,
 				B81AA2BB19907823003028EB /* LoadingAnimation.m in Sources */,
@@ -787,6 +798,7 @@
 				B81AA2A9199027B4003028EB /* UIAlertView+Blocks.m in Sources */,
 				B8B0F5481953B31000BE6929 /* LoadControls.m in Sources */,
 				B81AA286199016A8003028EB /* LocalizationSystem.m in Sources */,
+				B804ECA21A257DE700E07D07 /* UIImage+Color.m in Sources */,
 				B81AA2AA199027B4003028EB /* edi_md5.m in Sources */,
 				B89CC81F199D9674004FEB7A /* smallLayout.m in Sources */,
 			);

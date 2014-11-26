@@ -177,17 +177,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.1463500707" green="0.163991686" blue="0.16764987240000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pXz-AE-l85">
-                                <rect key="frame" x="30" y="359" width="260" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="902-kP-H25" eventType="touchUpInside" id="jcl-71-X2C"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1sI-qT-Pib">
                                 <rect key="frame" x="62" y="400" width="195" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -197,11 +186,25 @@
                                     <color key="titleShadowColor" red="0.1463500707" green="0.163991686" blue="0.16764987240000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pXz-AE-l85" customClass="KBRoundedButton">
+                                <rect key="frame" x="30" y="359" width="260" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowEnabled" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="login:" destination="902-kP-H25" eventType="touchUpInside" id="jcl-71-X2C"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="vys-lp-mU8" id="xZ6-9g-bPv"/>
-                        <outlet property="loginBtn" destination="pXz-AE-l85" id="O3t-ms-M4i"/>
+                        <outlet property="loginBtn" destination="pXz-AE-l85" id="bXa-IK-G5D"/>
                         <outlet property="pwdTextField" destination="hSv-kM-RED" id="obl-iH-le8"/>
                         <outlet property="userTextField" destination="iZk-qT-TrL" id="gnq-DO-d1A"/>
                     </connections>

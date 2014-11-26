@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-
 #import "UIButton+Bootstrap.h"
 #import "GeneralControl.h"
 #import "User.h"
@@ -83,7 +82,8 @@
     [validate Email:_userTextField.text andUsername:nil andPwd:_pwdTextField.text];
     if([validate isValid]){    //success
         [self.view endEditing:YES];
-        
+        self.loginBtn.working = YES;
+        self.loginBtn.enabled = NO;
         //********************* user login *******************************
         
         [User logInWithUsername:_userTextField.text andPassword:_pwdTextField.text WithCompletion:^(NSError *error,BOOL success){
@@ -99,7 +99,8 @@
                 
             }else{
                 //not success
-                
+                self.loginBtn.working = NO;
+                self.loginBtn.enabled = YES;
                 [GeneralControl showError:error withTextField:_pwdTextField];
             }
         }];
