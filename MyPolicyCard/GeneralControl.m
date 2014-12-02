@@ -51,9 +51,15 @@
     if(animate){
         UIViewController *toVC = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"Profile"];
         
-        [appd.foregroundWindow makeKeyAndVisible];
-        [appd.foregroundWindow SlideInFromButtom];
-        appd.window.rootViewController = toVC;
+        [UIView transitionFromView:appd.window.rootViewController.view
+                            toView:toVC.view
+                          duration:0.65f
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        completion:^(BOOL finished){
+                            [appd.foregroundWindow makeKeyAndVisible];
+                            [appd.foregroundWindow SlideInFromButtom];
+                            appd.window.rootViewController = toVC;
+                        }];
     }else{
         [appd.foregroundWindow makeKeyAndVisible];
         appd.window.rootViewController = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"Profile"];
@@ -62,9 +68,7 @@
 
 +(void)transitionForLogout{
     AppDelegate *appd =[[UIApplication sharedApplication] delegate];
-    
     UIViewController *svc = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"Login"];
-    
     [UIView transitionFromView:appd.window.rootViewController.view
                         toView:svc.view
                       duration:0.65f
@@ -73,12 +77,6 @@
                         appd.window.rootViewController = svc;
                         [appd.foregroundWindow slideOutFromTop];
                     }];
-    
-    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        
-//        [appd.foregroundWindow slideOutFromTop];
-//    });
 }
 
 @end
