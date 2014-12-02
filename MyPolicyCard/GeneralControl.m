@@ -76,6 +76,7 @@
                     completion:^(BOOL finished){
                         appd.window.rootViewController = svc;
                         [appd.foregroundWindow slideOutFromTop];
+                        [[UIApplication sharedApplication] setStatusBarHidden:YES];
                     }];
 }
 

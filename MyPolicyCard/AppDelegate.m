@@ -23,6 +23,8 @@
                   clientKey:@"lYw5JetgqAcRM12QOURKjlguO0szzE52nBLP1Gdb"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
     //cache keyboard
     //[UIResponder cacheKeyboard];
     

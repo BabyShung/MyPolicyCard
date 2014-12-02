@@ -84,13 +84,16 @@
 
 
 - (UIWindow *)superWindow{
-    
+    //for this app, temporarily a workaround
     NSArray * windows = [UIApplication sharedApplication].windows;
-    NSInteger index = [windows indexOfObject:self];
-    if (index) {
-        return windows[index - 1];
-    }
-    return nil;
+    return windows[0];
+    
+//    NSArray * windows = [UIApplication sharedApplication].windows;
+//    NSInteger index = [windows indexOfObject:self];
+//    if (index) {
+//        return windows[index - 1];
+//    }
+//    return nil;
 }
 
 - (UIWindow *)nextWindow{

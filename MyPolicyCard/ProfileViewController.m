@@ -34,6 +34,10 @@ const NSString *settingCellIdentity = @"Cell";
     
     [super viewDidLoad];
     
+    
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     [self loadControls];
 
 }
@@ -138,5 +142,6 @@ const NSString *settingCellIdentity = @"Cell";
         
     }];
 }
+
 
 @end

@@ -84,6 +84,8 @@
         [self.view endEditing:YES];
         self.loginBtn.working = YES;
         self.loginBtn.enabled = NO;
+        self.userTextField.enabled = NO;
+        self.pwdTextField.enabled = NO;
         //********************* user login *******************************
         
         [User logInWithUsername:_userTextField.text andPassword:_pwdTextField.text WithCompletion:^(NSError *error,BOOL success){
@@ -96,11 +98,13 @@
                 //transition my special window
                 [GeneralControl transitionToLoggedin_Animation:YES];
                
-                
             }else{
                 //not success
                 self.loginBtn.working = NO;
                 self.loginBtn.enabled = YES;
+                self.userTextField.enabled = YES;
+                self.pwdTextField.enabled = YES;
+
                 [GeneralControl showError:error withTextField:_pwdTextField];
             }
         }];
@@ -125,10 +129,6 @@
 
 - (void)MySingleTap:(UITapGestureRecognizer *)sender{
     [self.view endEditing:YES];
-}
-
--(BOOL)prefersStatusBarHidden{
-    return YES;
 }
 
 @end

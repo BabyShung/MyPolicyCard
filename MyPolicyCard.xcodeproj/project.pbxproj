@@ -381,11 +381,11 @@
 		B8A420BE198FD33700D77DFB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B81AA29F199026E6003028EB /* GeneralControl.h */,
+				B81AA2A0199026E6003028EB /* GeneralControl.m */,
 				B81AA2C9199678A0003028EB /* responsiveBtn */,
 				B81AA29D199026E6003028EB /* UserDefaultHelper.h */,
 				B81AA29E199026E6003028EB /* UserDefaultHelper.m */,
-				B81AA29F199026E6003028EB /* GeneralControl.h */,
-				B81AA2A0199026E6003028EB /* GeneralControl.m */,
 				B8B0F5461953B31000BE6929 /* LoadControls.h */,
 				B8B0F5471953B31000BE6929 /* LoadControls.m */,
 				B8C8F27F195D31BF009F8F6E /* UILayers.h */,
