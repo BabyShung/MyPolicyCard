@@ -16,9 +16,7 @@
 @implementation GeneralControl
 
 +(void)showError:(NSError *)error withTextField:(UITextField *)textfield{
-    
     NSString *errorMsg;
-    
     if(error.code == 101){
         errorMsg = AMLocalizedString(@"ERROR_LOGIN", nil);
     }else{
@@ -33,7 +31,6 @@
 }
 
 +(void)showAlertView:(NSString *)msg withTextField:(UITextField *)textfield{
-    
     TLAlertView *alert = [[TLAlertView alloc] initWithTitle:AMLocalizedString(@"OOPS", nil) message:msg buttonTitle:AMLocalizedString(@"Cancel", nil) handler:^(TLAlertView *alertView) {
         if(textfield){
             textfield.text = @"";
@@ -46,30 +43,16 @@
 +(void)transitionToLoggedin_Animation:(BOOL)animate{
     
     NSLog(@"transitionToShowPlan ******");
-    
     AppDelegate *appd =[[UIApplication sharedApplication] delegate];
-    
     appd.foregroundWindow = [[slidingWindow alloc] initWithFrameAndGestures:[UIScreen mainScreen].bounds];
     appd.foregroundWindow.rootViewController = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"CardsNav"];
     appd.foregroundWindow.windowLevel = UIWindowLevelStatusBar;
     
-    
     if(animate){
-        
         UIViewController *toVC = [appd.myStoryboard instantiateViewControllerWithIdentifier:@"Profile"];
-        
-//        [UIView transitionFromView:appd.window.rootViewController.view
-//                            toView:toVC.view
-//                          duration:2.65f
-//                           options:UIViewAnimationOptionTransitionCrossDissolve
-//                        completion:^(BOOL finished){
-//                            
-//                            
-//                        }];
         
         [appd.foregroundWindow makeKeyAndVisible];
         [appd.foregroundWindow SlideInFromButtom];
-        
         appd.window.rootViewController = toVC;
     }else{
         [appd.foregroundWindow makeKeyAndVisible];

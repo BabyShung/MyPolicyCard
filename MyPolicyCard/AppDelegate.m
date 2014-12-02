@@ -44,8 +44,7 @@
         
         NSLog(@"Second Login: %@",[User sharedInstance]);
     
-    }else{
-        //not exist, show login page
+    }else{  //not exist, show login page
         [self initLoginWindow];
     }
 }
