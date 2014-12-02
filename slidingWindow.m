@@ -84,6 +84,7 @@
 
 
 - (UIWindow *)superWindow{
+    
     //for this app, temporarily a workaround
     NSArray * windows = [UIApplication sharedApplication].windows;
     return windows[0];

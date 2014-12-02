@@ -12,9 +12,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIStoryboard *myStoryboard;
-@property (strong, nonatomic) slidingWindow *window;
+@property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) slidingWindow *foregroundWindow;
-
--(void)initLoginWindow;
 
 @end

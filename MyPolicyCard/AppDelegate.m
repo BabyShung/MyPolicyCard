@@ -47,15 +47,8 @@
         NSLog(@"Second Login: %@",[User sharedInstance]);
     
     }else{  //not exist, show login page
-        [self initLoginWindow];
+        self.window.rootViewController = [self.myStoryboard instantiateViewControllerWithIdentifier:@"Login"];
     }
-}
-
--(void)initLoginWindow{
-    self.window = [[slidingWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.windowLevel = UIWindowLevelNormal;
-    self.window.rootViewController = [self.myStoryboard instantiateViewControllerWithIdentifier:@"Login"];
-    [self.window makeKeyAndVisible];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
